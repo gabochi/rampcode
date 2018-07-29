@@ -21,7 +21,7 @@ If the DSP is on, you should hear an annoying sinewave. Try dividing the sine to
 **$v1** is the actual value of the ramp, an icreasing counter (16000 per cycle). **t** is a very useful constant = 16000. Then you have all math (`+ - * / % ...`), bitwise (`& | >> << ...`) and non-bitwise (`&& || > < ...`) logic operators.
 
 ## Messages
-There are two kinds of messages that rampcode receives: *ramp* and *code*. **Each type of msg is separated by a ; and each msg is separated by ,**. So you can do something like this:
+There are two kinds of messages that rampcode receives: *ramp* and *code*. **Each type of msg is separated by a ; and each msg is separated by ,**.
 
 **ramp** sets the general speed and pitch in cycles per second (hz), *think of a cycle as a pattern*.
 
