@@ -18,7 +18,7 @@ It has **just one time ramp (phasor~) and all sounds are a function of that**. I
 
 If the DSP is on, you should hear an annoying sinewave. Try dividing the sine to change the pitch like `sin($v1/8)` and play with different subdivissions and envelope curves as `sin($v1/4) 8 2`, `sin($v1/4) 8 10`, `sin($v1/4) 4 1`, etc. There is an optional fourth argument for paning: `sin($v1/8) 8 1 0`. Paning goes from -1 (full left) to 1 (full right). All **code** arguments but envelope curve can be expressions as in `sin($v1/4) 8*($v1%t<4000) 1 sin($v1/t)`.
 
-**$v1** is the actual value of the ramp, an icreasing counter (8000 per cycle). **t** is a very useful constant = 8000. Then, you have all math (`+ - * / % ...`), bitwise (`& | >> << ...`) and non-bitwise (`&& || > < ...`) logical operators.
+**$v1** is the actual value of the ramp, an icreasing counter (8000 per cycle). **t** is a very useful constant = 8000. Then, you have all math (`+ - * / % ...`), bitwise (`& | >> << ...`) and non-bitwise (`&& || > < ...`) logical operators. Also, there is a random value (from 0 to 1) **$v2** that's generated in every subdivission of the expression.
 
 ## Messages
 There are two kinds of messages that rampcode receives: *ramp* and *code*. **Each type of msg is separated by a ; and each msg is separated by ,**.
