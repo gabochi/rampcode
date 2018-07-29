@@ -1,0 +1,13 @@
+ramp 0.95;
+
+code
+
+sin(($v1*2)/($v1/t%6+1))*0.1 1 3,
+
+sin(($v1*4)/($v1/(t/2)%6-6))*0.1 2 3,
+
+sin($v1/($v1/(t/4)%6+1))*0.1 4 10,
+
+end;
+
+Use the $v1/x%y formula for sequences and arpeggios.

@@ -1,0 +1,17 @@
+ramp 1;
+
+code
+
+sin(($v1*2)/($v2*10%10))*0.1 4 8,
+
+sin($v1/($v2*10%10))*0.05 ($v2<0.5) 1 ($v2*2)-1,
+
+sin(($v1/2)/($v2*10%10))*0.2 2*($v2<0.5) 2 1-($v2*2),
+
+sin($v1+sin($v1)*$v2*10)*0.02*sin($v1/1200) 6 6,
+
+end;
+
+$v2 gives a random value from 0 to 1 in each subdivission. Remember that the envelope curve is fixed but any other argument can be an expression ;)
+
+IMPORTANT: Some PD versions have a dynamic patching bug. The "end" msg doen's mean really nothing so... if you can't hear your changes and the syntax is correct, add some whatever msg and probably the object will be updated.
