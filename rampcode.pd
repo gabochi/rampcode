@@ -1,8 +1,13 @@
-#N canvas 1127 273 110 76 10;
-#N canvas 1 78 1351 689 (subpatch) 0;
-#X obj 607 367 s~ ramp;
+#N canvas 359 62 878 478 10;
+#X obj 484 -414 cnv 15 349 181 empty empty envelope\ table 56 12 0
+14 -191407 -66577 0;
+#X obj 260 -414 cnv 15 207 145 empty empty dynamic\ patching 20 12
+0 14 -191407 -66577 0;
+#X obj 390 -646 cnv 15 396 125 empty empty vim\ comunication 261 14
+0 14 -162280 -66577 0;
+#X obj 75 -265 s~ ramp;
 #N canvas 1 78 450 300 (subpatch) 0;
-#X array env 44100 float 1;
+#X array env 44100 float 1 black black;
 #A 0 0.00113379 0.00226757 0.00340136 0.00453515 0.00566893 0.00680272
 0.00793651 0.00907029 0.0102041 0.0113379 0.0124717 0.0136054 0.0147392
 0.015873 0.0170068 0.0181406 0.0192744 0.0204082 0.0215419 0.0226757
@@ -5187,7 +5192,7 @@
 0.000554296 0.000529101 0.000503905 0.00047871 0.000453515 0.000428319
 0.000403124 0.000377929 0.000352734 0.000327538 0.000302343 0.000277148
 0.000251953 0.000226757 0.000201562 0.000176367 0.000151172 0.000125976
-0.000100781 7.55858e-05 5.03905e-05 2.51953e-05 2.92876e-13 0 0 0 0
+0.000100781 7.55858e-05 5.03905e-05 2.51953e-05 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -5200,7 +5205,7 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+0 0 0 0 0 0 0 0 0 0 0;
 #A 41000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -5296,62 +5301,68 @@
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0;
 #X coords 0 1 44099 0 200 140 1;
-#X restore 93 272 graph;
-#X obj 433 360 tabwrite~ env;
-#X obj 433 337 vline~;
-#X obj 433 293 t b b;
-#X obj 433 272 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X restore 497 -387 graph;
+#X obj 706 -300 tabwrite~ env;
+#X obj 706 -323 vline~;
+#X obj 706 -367 t b b;
+#X obj 706 -388 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 607 302 phasor~;
-#X obj 338 273 loadbang;
-#X obj 338 316 value t;
-#X obj 607 252 r ramp;
+#X obj 75 -330 phasor~;
+#X obj 169 -353 loadbang;
+#X obj 169 -308 value t;
+#X obj 36 -397 r ramp;
 #N canvas 472 339 488 301 ins 0;
-#X obj 0 0 in xsin($v1/($v2*10%10))*0.1 1 1 0;
-#X obj 0 0 in sin($v1/($v2*10%10))*0.1 1+($v2<0.5) 1 0;
-#X obj 0 0 in end 0 0 0;
-#X restore 736 395 pd ins;
-#X obj -85 263 qlist;
-#X obj 3 5 bng 40 250 50 0 empty empty read 8 20 0 10 -262144 -1 -1
+#X obj 0 0 in sin($v1|$v1>>9<<2)*($v1/t%8<4) 8 4 0;
+#X obj 0 0 in sin($v1&$v1>>11<<1)*($v1/t%8>3) 4 1 0;
+#X obj 0 0 in 0 0 0 0;
+#X restore 274 -299 pd ins;
+#X obj -11 -487 qlist;
+#X obj 85 -614 bng 48 250 50 0 empty empty read\ it 3 25 0 10 -262144
+-1 -1;
+#X msg -11 -351 \; pd-ins clear;
+#X obj 274 -355 list;
+#X obj 191 -679 bng 124 250 50 0 empty empty open\ file 8 61 0 20 -262144
+-1 -1;
+#X obj 191 -547 openpanel;
+#X msg 192 -499 read /home/gabo/Parches/rampcoding/rampcode-2/examples/BasicShapes.gede
 ;
-#X msg -23 156 \; pd-ins clear;
-#X obj 736 325 list;
-#X obj 47 5 bng 40 250 50 0 empty empty open 9 20 0 10 -262144 -1 -1
-;
-#X obj 87 112 openpanel;
-#X msg 74 167 read /home/gabo/Parches/rampcoding/rampcode-1/examples/Random.gede
-;
-#X msg 87 134 set read \$1;
-#X obj -19 97 t b b b;
-#X msg 736 346 \; pd-ins obj 0 0 in \$1 \$2 \$3 \$4;
-#X obj 736 304 r code;
-#X obj 607 346 *~ 8000;
-#X msg 338 294 8000;
-#X msg 433 315 0 \, 1 20 \, 0 900 20;
-#X obj 607 324 *~ 256;
-#X obj 607 280 *~ 0.00390625;
-#X connect 3 0 2 0;
-#X connect 4 0 24 0;
-#X connect 4 1 2 0;
-#X connect 5 0 4 0;
-#X connect 6 0 25 0;
-#X connect 7 0 23 0;
-#X connect 9 0 26 0;
-#X connect 12 0 19 0;
-#X connect 14 0 20 0;
-#X connect 15 0 16 0;
-#X connect 16 0 18 0;
-#X connect 17 0 11 0;
-#X connect 18 0 17 0;
-#X connect 19 0 11 0;
-#X connect 19 1 13 0;
-#X connect 19 2 17 0;
-#X connect 21 0 14 0;
-#X connect 22 0 0 0;
-#X connect 23 0 8 0;
-#X connect 24 0 3 0;
-#X connect 25 0 22 0;
-#X connect 26 0 6 0;
-#X coords 0 1 100 -1 90 50 1 0 0;
-#X restore 3 -449 graph;
-#X coords 0 76 1 75 90 60 0;
+#X msg 191 -525 set read \$1;
+#X obj 85 -562 t b b b;
+#X msg 274 -334 \; pd-ins obj 0 0 in \$1 \$2 \$3 \$4;
+#X obj 274 -376 r code;
+#X obj 75 -286 *~ 8000;
+#X msg 169 -330 8000;
+#X msg 706 -345 0 \, 1 20 \, 0 900 20;
+#X obj 75 -308 *~ 256;
+#X obj 75 -352 *~ 0.00390625;
+#X obj 501 -607 netreceive 3005 0 old;
+#X text 419 -548 autocmd BufWritePost *.gede silent exec "!pdsend 3005
+< <afile>";
+#X text 403 -570 ADD THIS LINE IN YOUR vimrc FILE AND FORGET ABOUT
+THE PATCH:;
+#X obj 169 -282 r comments;
+#X text 82 -397 THE RAMP...;
+#X connect 6 0 5 0;
+#X connect 7 0 27 0;
+#X connect 7 1 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 28 0;
+#X connect 10 0 26 0;
+#X connect 12 0 29 0;
+#X connect 12 0 16 0;
+#X connect 15 0 22 0;
+#X connect 17 0 23 0;
+#X connect 18 0 19 0;
+#X connect 19 0 21 0;
+#X connect 20 0 14 0;
+#X connect 21 0 20 0;
+#X connect 22 0 14 0;
+#X connect 22 1 16 0;
+#X connect 22 2 20 0;
+#X connect 24 0 17 0;
+#X connect 25 0 3 0;
+#X connect 26 0 11 0;
+#X connect 27 0 6 0;
+#X connect 28 0 25 0;
+#X connect 29 0 9 0;
+#X coords 0 478 1 477 90 60 0;
