@@ -1,0 +1,11 @@
+ramp 1;
+
+code
+
+($v1%64<$v1/50%64)*0.3 8-($v1/2000%5==0)*4 1,
+
+0;
+
+comment 
+
+Play with the /50%64 expression to change the time and width of the modulation.
