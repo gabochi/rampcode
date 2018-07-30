@@ -14,8 +14,9 @@ sin($v1*2+sin($v1)*222)*0.12 1 10,
 
 sin($v1/3+sin($v1/2)*sin($v1/500)*(sin($v1/(t*8)))*25)*0.03 8 1,
 
-end; 
+0; 
 
+comments
 
 100% FM
 
@@ -27,5 +28,5 @@ and eventually you'll get to
 
 sin($v1/x+sin($v1/y)*sin($v1/?+sin($v1/!))*z) etc..
 
-<3 isn't it beautiful? <3
+<3 isn't it beautiful? <3;
 

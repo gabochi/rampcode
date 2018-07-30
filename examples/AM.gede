@@ -20,6 +20,8 @@ sin($v1/4)*0.01*sin($v1/44000) 0.01 0.1,
 
 sin($v1/5)*0.01*sin($v1/53000) 0.01 0.1,
 
-end;
+0;
 
-This came out messing with the basic shapes example, adding AM to every expression. You can notice them after the general amplitude (*0.1 *0.2 *0.075 etc), just add another multiplication *sin(something-below-audible-pitches). You can add as much as you want and get crazy combinations: *sin()*sin()*sin()...
+comments 
+
+This came out messing with the basic shapes example, adding AM to every expression. You can notice them after the general amplitude (*0.1 *0.2 *0.075 etc), just add another multiplication *sin(something-below-audible-pitches). You can add as much as you want and get crazy combinations: *sin()*sin()*sin()...;

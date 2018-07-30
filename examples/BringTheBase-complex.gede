@@ -10,7 +10,9 @@ sin($v1*sin($v1))*0.15 4*($v1%t<4000)+($v1%(t*8)<t)*8 8 0.1,
 
 sin($v1/32+sin($v1/32)*sin($v1/1000)*12)*0.1 4 2,
 
-end;
+0;
+
+comments
 
 Well, things went complex... keep in mind that t=8000 and means a cycle or a pattern.
-Also you should know that logical expressions like X<Y return 1 if true and 0 if false.
+Also you should know that logical expressions like X<Y return 1 if true and 0 if false;

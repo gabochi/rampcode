@@ -10,11 +10,9 @@ sin($v1*sin($v1))*0.15 1 15 0.1,
 
 ($v1%160<40)*0.1 4 1,
 
-end;
+0;
 
-Here you have a hard and monotonus techno base. Lets see:
+comments
 
-1. SINE kick in 2 (just a low sine)
-2. FM hihat in 4 (slightly paned to the left)
-3. NOISE snare in 1 (slightly paned to the right)
-4. SQUARE bass in 4 (1/4 pulse width)
+Here you have a hard and monotonus techno base;
+

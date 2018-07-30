@@ -8,6 +8,8 @@ sin(($v1*4)/($v1/(t/2)%6-6))*0.1 2 3,
 
 sin($v1/($v1/(t/4)%6+1))*0.1 4 10,
 
-end;
+0;
 
-Use the $v1/x%y formula for sequences and arpeggios.
+comments
+
+Use the $v1/x%y formula for sequences and arpeggios;

@@ -14,6 +14,8 @@ sin($v1*sin($v1))*0.08 1 10,
 
 sin($v1*2+sin($v1)*333)*0.095 4 8,
 
-end; 
+0; 
 
-Use min(\,) and max(\,) to clip the wave.
+comments
+
+Use min(\,) and max(\,) to clip the wave;

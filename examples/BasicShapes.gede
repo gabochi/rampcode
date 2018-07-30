@@ -11,3 +11,8 @@ sin($v1/7)*0.1 ($v1/t%4==2)*4 2,
 sin($v1*sin($v1))*0.1 ($v1/t%4==3)*8 2,
 
 0;
+
+comments
+
+basic wave shapes and a "trigger" function;
+
