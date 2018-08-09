@@ -31,3 +31,30 @@ There are two kinds of messages that rampcode receives: *ramp* and *code*. **Eac
 
 ## Examples are your best friend
 I think the best way to understand it is taking a look at the examples and mess with them. There are many topics and possibilities. **Good luck!** Don't hesitate to contact me to ask anything and show me your rampcodes :heart:
+
+---
+## The Docker way
+
+Execute as:
+```bash
+docker run --rm -it --name puredata \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+    --device /dev/snd \
+    -e DISPLAY="unix$DISPLAY" \
+    -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native \
+    -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native \
+    --group-add=audio \
+    -v /dev/shm:/dev/shm \
+    --cap-add=SYS_ADMIN \
+    $(find /dev/snd/ -type c | sed 's/^/--device /') \
+    --security-opt seccomp=./docker/chrome.json \
+    -v <rampcode-repo>:/repo \
+    puredata/ubu12.04:v1 \
+    bash
+```
+
+where `rampcode-repo` is the repository directory.
+Some of the above arguments might not be really necessary.
+Tested in Arch Linux (kernel v4.17).
+
+<!--- EOF -->
