@@ -1,0 +1,110 @@
+#N canvas 355 78 878 558 10;
+#X obj 663 -271 cnv 15 100 60 empty empty sampling 20 12 0 14 -233017
+-66577 0;
+#X obj 4 -349 cnv 15 100 60 empty empty envelopes 20 12 0 14 -233017
+-66577 0;
+#X obj 432 -303 cnv 15 100 60 empty empty dynamic_patching 20 12 0
+14 -233017 -66577 0;
+#X obj 349 -542 cnv 15 100 60 empty empty editor-to-pd 20 12 0 14 -233017
+-66577 0;
+#X obj 193 -409 s~ ramp;
+#N canvas 1 78 450 300 (subpatch) 0;
+#X array env-0 44100 float 0 black black;
+#X coords 0 1 44099 0 100 70 1;
+#X restore 41 -305 graph;
+#X obj 172 -191 vline~;
+#X obj 246 -250 t b b;
+#X obj 246 -270 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 193 -474 phasor~;
+#X obj 144 -555 r ramp;
+#N canvas 448 267 488 301 ins 0;
+#X restore 590 -296 pd ins;
+#X msg 78 -495 \; pd-ins clear;
+#X obj 503 -225 list;
+#X obj 446 -266 r code;
+#X obj 193 -430 *~ 8000;
+#X msg 172 -211 0 \, 1 20 \, 0 900 20;
+#X obj 193 -452 *~ 256;
+#X obj 193 -496 *~ 0.00390625;
+#X obj 483 -511 netreceive 3005 0 old;
+#X text 381 -436 autocmd BufWritePost *.gede silent exec "!pdsend 3005
+< <afile>";
+#X obj 590 -272 r comments;
+#X obj 50 -554 loadbang;
+#X obj 246 -319 loadbang;
+#X msg 10 -494 \; pd dsp 1;
+#X obj 246 -297 del 5;
+#X text 374 -399 (thank munshkr for this one);
+#X text 365 -458 OR ADD THIS LINE IN YOUR vimrc FILE:;
+#X text 365 -484 SET pdsend 3005 < [yourfile] COMMAND IN YOUR FAVORITE
+EDITOR;
+#X msg 205 -134 0 \, 1 900 \, 0 20 900;
+#X obj 172 -170 tabwrite~ env-0;
+#N canvas 1 78 450 300 (subpatch) 0;
+#X array env-1 44100 float 0 black black;
+#X coords 0 1 44099 0 100 70 1;
+#X restore 41 -215 graph;
+#X obj 205 -114 vline~;
+#X obj 205 -93 tabwrite~ env-1;
+#X msg 503 -204 \; pd-ins obj 0 0 in \$1 \$2 \$3 \$4 \$5 \$6 \, obj
+10 10 nul \;, f 25;
+#X obj 744 -550 cnv 15 100 60 empty empty somevalues... 20 12 0 14
+-233017 -66577 0;
+#X msg 791 -501 8000;
+#X obj 791 -522 loadbang;
+#X obj 791 -429 value t2;
+#X obj 791 -379 value t4;
+#X obj 791 -329 value t8;
+#X obj 791 -479 value t1;
+#X msg 791 -451 4000;
+#X msg 791 -401 2000;
+#X msg 791 -351 1000;
+#X obj 446 -244 route samp;
+#X obj 685 -135 array define sample;
+#X obj 685 -243 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 685 -223 openpanel;
+#X msg 685 -201 read -resize \$1 sample;
+#X obj 685 -179 soundfiler;
+#X obj 440 -218 list;
+#X msg 434 -128 \; pd-ins obj 0 0 samp \$1 \$2 \$3 \$4 \$5 \$6 \, obj
+10 10 nul \;, f 25;
+#X obj 685 -157 value ts;
+#X connect 6 0 30 0;
+#X connect 7 0 16 0;
+#X connect 7 0 29 0;
+#X connect 7 1 30 0;
+#X connect 7 1 33 0;
+#X connect 8 0 7 0;
+#X connect 9 0 17 0;
+#X connect 10 0 18 0;
+#X connect 10 0 12 0;
+#X connect 13 0 34 0;
+#X connect 14 0 45 0;
+#X connect 15 0 4 0;
+#X connect 16 0 6 0;
+#X connect 17 0 15 0;
+#X connect 18 0 9 0;
+#X connect 22 0 12 0;
+#X connect 22 0 24 0;
+#X connect 23 0 25 0;
+#X connect 25 0 8 0;
+#X connect 29 0 32 0;
+#X connect 32 0 33 0;
+#X connect 36 0 41 0;
+#X connect 37 0 36 0;
+#X connect 37 0 42 0;
+#X connect 37 0 43 0;
+#X connect 37 0 44 0;
+#X connect 42 0 38 0;
+#X connect 43 0 39 0;
+#X connect 44 0 40 0;
+#X connect 45 0 51 0;
+#X connect 45 1 13 0;
+#X connect 47 0 48 0;
+#X connect 48 0 49 0;
+#X connect 49 0 50 0;
+#X connect 50 0 53 0;
+#X connect 51 0 52 0;
+#X coords 0 558 1 557 90 60 0;
