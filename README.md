@@ -63,9 +63,9 @@ The *ramp* is a counter, a line function. Each cycle adds 8000 to the ramp. The 
 
 All common logical -bitwise (`& | >> << ...`) and non bitwise (`&& || < > == ...`)- and mathematical (`+ - * / % ...`) functions are available for expressions. **If you need to use an expression that need the *comma* char (,) put an *escape* char before the comma (\,).**
 
-## Examples
+## Examples, demo, tutorial...
 
-Check the Example folder. For now, take a look at this:
+The example folder is not updated but I recently upload a [demo/tutorial video](https://youtu.be/2AApVwGgmKY).
 
 ### Waves
 
