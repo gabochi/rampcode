@@ -1,7 +1,7 @@
 # Rampcode
 
-RC is a bytebeat inspired livecoding language written in pd. Everything is a function of one time ramp (phasor~).
-This is still very beta, full doc soon. Check the examples.
+RC is a bytebeat inspired livecoding language written in Pure Data: everything is a function of one time ramp (phasor~).
+This is still very beta, full doc soon. Check the examples. Issues found with pd-vanilla, please try on pd-l2ork or purr.
 
 # Setup
 
