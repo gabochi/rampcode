@@ -1,0 +1,50 @@
+#N canvas 332 122 719 444 10;
+#X obj 8 93 list;
+#X obj 8 74 r c\$1;
+#X obj 534 57 loadbang;
+#N canvas 664 321 366 71 code-\$0 0;
+#X restore 325 135 pd code-\$0;
+#X msg 534 79 \; pd-code-\$0 clear;
+#N canvas 151 371 366 71 fi-\$0 0;
+#X obj 0 0 fi 1476;
+#X restore 325 155 pd fi-\$0;
+#N canvas 153 371 366 71 d-\$0 0;
+#X obj 0 0 d 1476;
+#X restore 325 175 pd d-\$0;
+#N canvas 155 371 366 71 h-\$0 0;
+#X obj 0 0 h 1476;
+#X restore 325 195 pd h-\$0;
+#N canvas 155 371 366 71 p-\$0 0;
+#X obj 0 0 p 1476 0.5;
+#X restore 325 215 pd p-\$0;
+#X obj 9 238 r f\$1;
+#X obj 9 260 list;
+#X msg 9 281 \; pd-fi-\$0 clear \, obj 0 0 fi \$0 \$1 \$2 \, obj 0
+20 dummy \;;
+#X msg 9 115 \; pd-code-\$0 clear \, obj 0 0 code \$0 \$1 \; pd-fi-\$0
+clear \, obj 0 0 fi \$0 \; pd-d-\$0 clear \, obj 0 0 d \$0 \; pd-h-\$0
+clear \, obj 0 0 h \$0 \; pd-p-\$0 clear \, obj 0 0 p \$0 0.5 \; pd-code-\$0
+obj 0 20 dummy \;;
+#X obj 9 350 list;
+#X obj 9 328 r d\$1;
+#X msg 9 371 \; pd-d-\$0 clear \, obj 0 0 d \$0 \$1 \$2 \, obj 0 20
+dummy \;;
+#X obj 389 260 list;
+#X obj 389 350 list;
+#X obj 389 238 r h\$1;
+#X msg 389 281 \; pd-h-\$0 clear \, obj 0 0 h \$0 \$1 \$2 \, obj 0
+20 dummy \;;
+#X obj 389 328 r p\$1;
+#X msg 389 371 \; pd-p-\$0 clear \, obj 0 0 p \$0 \$1 \$2 \, obj 0
+20 dummy \;;
+#X connect 0 0 12 0;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 16 0 19 0;
+#X connect 17 0 21 0;
+#X connect 18 0 16 0;
+#X connect 20 0 17 0;
