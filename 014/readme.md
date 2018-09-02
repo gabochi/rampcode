@@ -10,13 +10,16 @@ This is still very beta, full doc soon. Check the examples. Issues found with pd
 Add
 `autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>`
 
+BTW, you'll probably need to give sendfile.sh exec permission:
+`:~$ chmod -x sendfile.sh`
+
 ## Syntax suggestion
 `:set filetype=haskell`
 
 # New:
 
 - Line evaluation in vim
-- New syntax with regex stuff
+- New syntax with regex stuff (all functions are single characters)
 - Handle FXs by name separately
 - Sample&Hold effect
 - Random time can be set
