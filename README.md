@@ -8,6 +8,7 @@ Rampcode is a bytebeat inspired system for livecoding.
 ## setup
 - extract files from the latest version in a rampcode folder
 - extract samples inside rampcode/samples
+- download tuto.gede to rampcode folder
 - add this line to your usr/bin/vimr:
 
 `autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>`
@@ -19,7 +20,7 @@ and this (optional):
 if you'll use another editor you need it to figure how to send a line to the sendline.sh script.
 
 - open rampcode.pd in your pd
-- download tuto.gede and open it in vim from your rampcode folder
+- open tuto.gede with your editor
 - that's it, follow the tutorial and it should work :)
 
 ## bugs
