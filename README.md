@@ -20,7 +20,7 @@ if you'll use another editor you need it to figure how to send a line to the sen
 
 - open rampcode.pd in your pd
 - download tuto.gede and open it in vim from your rampcode folder
-- that's it, folow the tutorial and it should work :)
+- that's it, follow the tutorial and it should work :)
 
 ## bugs
 - examine "* " freezes pd
