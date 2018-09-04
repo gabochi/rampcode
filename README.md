@@ -1,9 +1,26 @@
 # rampcode
 Rampcode is a bytebeat inspired system for livecoding.
 
-## New on v020
-- granular synthesis
-- fixed pd error msgs
+## requirements
+- pd-l2ork or purrdata
+- vim (or equivalent, like gedit, atom, etc)
 
-## To do
-- document
+## setup
+- extract files from the latest version
+- extract samples inside /samples
+- add this line to your usr/bin/vimr:
+
+`autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>`
+
+and this (optional):
+
+`autocmd BufNewFile,BufRead *.gede set syntax=haskell`
+
+if you'll use another editor you need it to figure how to send a line to the sendline.sh script.
+
+- open rampcode.pd in your pd
+- download tuto.gede and open it from your editor
+- that's it
+
+## bugs
+- examine "* " freezes pd
