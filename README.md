@@ -23,4 +23,4 @@ if you'll use another editor you need it to figure how to send a line to the sen
 - that's it, follow the tutorial and it should work :)
 
 ## bugs
-- examine "* " freezes pd (bash problem: sendline.sh)
+- sendline.sh : `*(space)` is not well interpreted and freezes pd
