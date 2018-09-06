@@ -6,9 +6,9 @@
 #X obj 110 186 *~;
 #X obj 154 162 expr~ 1-$v1;
 #X obj 148 135 clip~ 0 1;
-#X obj 292 60 noise~;
-#X obj 292 82 *~ 0.5;
-#X obj 292 104 +~ 0.5;
+#X obj 355 10 noise~;
+#X obj 355 32 *~ 0.5;
+#X obj 355 54 +~ 0.5;
 #X obj 292 126 samphold~;
 #X obj 347 103 expr~ $v1%ran;
 #X obj 148 113 expr~ \$2+($v2*0);

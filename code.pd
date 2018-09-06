@@ -1,13 +1,13 @@
 #N canvas 621 127 450 300 10;
-#X obj 141 29 r~ ramp;
-#X obj 56 136 clip~ -1 1;
-#X obj 56 158 s~ tofi-\$1;
+#X obj 213 8 r~ ramp;
+#X obj 104 238 clip~ -1 1;
+#X obj 104 260 s~ tofi-\$1;
 #X obj 278 82 noise~;
 #X obj 278 104 *~ 0.5;
 #X obj 278 126 +~ 0.5;
 #X obj 278 148 samphold~;
-#X obj 56 114 expr~ \$2+($v2*0);
-#X obj 329 125 expr~ $v1%ran;
+#X obj 104 216 expr~ \$2+($v2*0);
+#X obj 351 67 expr~ $v1%ran;
 #X connect 0 0 7 0;
 #X connect 0 0 8 0;
 #X connect 1 0 2 0;
