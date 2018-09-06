@@ -5,7 +5,7 @@ Rampcode is a bytebeat inspired language for livecoding written in Pure Data. It
 - Pure Data (tested on vanilla and l2ork)
 - vim (or equivalent, like gedit, atom, etc)
 
-## setup
+## Setup
 - Download or clone this repo
 - Add this line to your /usr/bin/vimr:
 
