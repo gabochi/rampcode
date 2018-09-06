@@ -1,0 +1,73 @@
+#N canvas 432 97 813 444 10;
+#X obj 8 74 r c\$1;
+#X obj 589 8 loadbang;
+#X obj 9 238 r f\$1;
+#X obj 9 328 r d\$1;
+#X obj 389 238 r h\$1;
+#X obj 389 328 r p\$1;
+#X obj 284 71 r w\$1;
+#X obj 154 59 soundfiler;
+#X obj 154 -4 r l\$1;
+#X obj 284 93 list prepend \$1;
+#X obj 8 93 list prepend \$1;
+#X msg 589 48 \; pd-p-\$1 clear \; pd-d-\$1 clear \; pd-h-\$1 clear
+\; pd-fi-\$1 clear \; pd-code-\$1 clear \;;
+#X obj 589 28 list prepend \$1;
+#N canvas 207 433 366 71 code-\$1 0;
+#X obj 0 0 wave 0 0.2 $v1*3%($v3/500)+$v3*$v2;
+#X obj 0 20 dummy;
+#X restore 578 144 pd code-\$1;
+#N canvas 151 371 366 71 fi-\$1 0;
+#X obj 0 0 fi 0;
+#X restore 578 164 pd fi-\$1;
+#N canvas 153 371 366 71 d-\$1 0;
+#X obj 0 0 d 0;
+#X restore 578 184 pd d-\$1;
+#N canvas 107 389 366 71 h-\$1 0;
+#X obj 0 0 h 0;
+#X restore 578 204 pd h-\$1;
+#N canvas 155 371 366 71 p-\$1 0;
+#X obj 0 0 p 0 0.5;
+#X restore 578 224 pd p-\$1;
+#X obj 9 260 list prepend \$1;
+#X obj 9 350 list prepend \$1;
+#X obj 389 260 list prepend \$1;
+#X obj 389 350 list prepend \$1;
+#X msg 8 113 \; pd-code-\$1 clear \, obj 0 0 code \$1 \$2 \; pd-fi-\$1
+clear \, obj 0 0 fi \$1 \; pd-d-\$1 clear \, obj 0 0 d \$1 \; pd-h-\$1
+clear \, obj 0 0 h \$1 \; pd-p-\$1 clear \, obj 0 0 p \$1 0.5 \; pd-code-\$1
+obj 0 20 dummy \;;
+#X msg 284 115 \; pd-code-\$1 clear \, obj 0 0 wave \$1 \$2 \$3 \;
+pd-fi-\$1 clear \, obj 0 0 fi \$1 \; pd-d-\$1 clear \, obj 0 0 d \$1
+\; pd-h-\$1 clear \, obj 0 0 h \$1 \; pd-p-\$1 clear \, obj 0 0 p \$1
+0.5 \; pd-code-\$1 obj 0 20 dummy \;;
+#X msg 9 281 \; pd-fi-\$1 clear \, obj 0 0 fi \$1 \$2 \$3 \, obj 0
+20 dummy \;;
+#X msg 9 371 \; pd-d-\$1 clear \, obj 0 0 d \$1 \$2 \$3 \, obj 0 20
+dummy \;;
+#X msg 389 281 \; pd-h-\$1 clear \, obj 0 0 h \$1 \$2 \$3 \, obj 0
+20 dummy \;;
+#X msg 389 371 \; pd-p-\$1 clear \, obj 0 0 p \$1 \$2 \$3 \, obj 0
+20 dummy \;;
+#X obj 154 81 s~ \$1-samples;
+#X obj 7 -4 array define \$1-wave;
+#X obj 154 16 list prepend \$1;
+#X msg 154 37 read -resize samples/\$2.wav \$1-wave;
+#X connect 0 0 10 0;
+#X connect 1 0 12 0;
+#X connect 2 0 18 0;
+#X connect 3 0 19 0;
+#X connect 4 0 20 0;
+#X connect 5 0 21 0;
+#X connect 6 0 9 0;
+#X connect 7 0 28 0;
+#X connect 8 0 30 0;
+#X connect 9 0 23 0;
+#X connect 10 0 22 0;
+#X connect 12 0 11 0;
+#X connect 18 0 24 0;
+#X connect 19 0 25 0;
+#X connect 20 0 26 0;
+#X connect 21 0 27 0;
+#X connect 30 0 31 0;
+#X connect 31 0 7 0;
