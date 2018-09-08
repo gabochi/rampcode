@@ -7,6 +7,10 @@ Rampcode is a bytebeat inspired language for livecoding written in Pure Data. It
 
 ## Setup
 - Download or clone this repo
+- Give sendline.sh executable permission
+
+`chmod +x sendline.sh`
+
 - Add this line to your /usr/bin/vimr:
 
 `autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>`
@@ -19,10 +23,6 @@ You can use another editor but you need it to figure how to send a line to the s
 For example, you can build an external tool in gedit with this script:
 
 `sh ./sendline.sh $GEDIT_CURRENT_LINE`
-
-- Give sendline.sh executable permission
-
-`chmod +x sendline.sh`
 
 - Open rampcode-xxx.pd in Pure Data
 - Open tuto.gede with your editor
