@@ -21,6 +21,10 @@ For example, you can build an external tool in gedit with this script:
 `#!/bin/sh
 sh ./sendline.sh $GEDIT_CURRENT_LINE`
 
+- Give sendline.sh executable permission
+
+`chmod +x sendline.sh`
+
 - Open rampcode-xxx.pd in Pure Data
 - Open tuto.gede with your editor
 - That's it, follow the tutorial and it should work :)
