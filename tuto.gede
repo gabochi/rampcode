@@ -211,17 +211,32 @@ p0 @ 0.5;			center
 
 
 Rampcode can manipulate samples from a wav file contained in /samples and
-named correctly.
+named correctly. l loads a file to a channel and w plays its samples according
+to the specified expression. 
 
-l0 @ 5 ; 		load 5.wav as channel 0 (not an expression!)
+W is the total of samples in the file. Automatically, all samples expressions 
+stay inside the range of the total samples loaded like (expression)%W.
 
-w0 @ 0.1 @ t*5%W ;	play total samples (W) at t*5 speed with 0.1 amplitude
+With this tools you can build a simple player, a slicer, granular synth, etc.
 
-w0 @ 0.1 @ W - t*5%W;		reverse
+l0 @ 6 ; 				load 5.wav as channel 0 
+					(can't be an expression!)
 
-w0 @ 0.1 @ t*6%(W/200) + t%W;			t*6 W/200 grain, t speed
+w0 @ 0.1 @ t*5 ;			play at normal speed (*5) 
+					and 0.1 amplitude.
 
-w0 @ 0.3*e1 @ t*3%(W/500) + W*x;  		random offset
+w0 @ 0.1 @ W - t*5%W;			reverse
+
+w0 @ 0.1 @ t*5 %(W/20) + #8*(W/8);	a slice sequencer
+
+w0 @ 0.1 @ t*5 %(W/200) + t;		granular
+
+w0 @ 0.1 @ (t*#4*4) % (W/200) + t;	granular sequence
+
+w0 @ 0.1 @ t*3%(W/500) + W*x;		random offset
+
+w0 @ e1*0.3 @ t*3%(W/(250*(X3+1))) +W*x;same with envelope and oct shifter
+
 
 "------------------------------------------------------------------- 7.EXAMPLE"
 
