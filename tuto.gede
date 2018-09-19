@@ -48,6 +48,8 @@ Rampcode has 8 channels (0-7). Send a msg to a channel with c:
 c0 @ s(t) * 0.1; 	press ctrl+e here to evaluate
 c0 @ 0;			and here to stop the sound
 
+You can use clr@<channel>; or clr@8; to reset one or all channels.
+
 When we say that rampcode is inspired by bytebeat we mean all output is
 a function/expression of time. Let's see...
 
