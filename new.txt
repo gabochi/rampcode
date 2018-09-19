@@ -1,3 +1,0 @@
-X, # and ' start counting from 1.
-
-WARNING: do not give floats to % like %(x*100), it crashes on vanilla.
