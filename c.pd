@@ -1,4 +1,4 @@
-#N canvas 354 129 813 444 10;
+#N canvas 1 137 785 444 10;
 #X obj 8 153 r c\$1;
 #X obj 553 -2 loadbang;
 #X obj 9 238 r f\$1;
@@ -11,14 +11,14 @@
 #X obj 389 170 list prepend \$1;
 #X obj 8 172 list prepend \$1;
 #X obj 553 18 list prepend \$1;
-#N canvas 205 433 366 71 code-\$1 0;
+#N canvas 203 435 366 71 code-\$1 0;
 #X obj 0 0 code 0 0;
 #X restore 454 -2 pd code-\$1;
 #N canvas 149 371 366 71 fi-\$1 0;
 #X obj 0 0 fi 0 0 0;
 #X restore 454 18 pd fi-\$1;
 #N canvas 151 371 366 71 d-\$1 0;
-#X obj 0 0 d 0 0 1000;
+#X obj 0 0 d 0 0 0;
 #X restore 454 38 pd d-\$1;
 #N canvas 105 389 366 71 h-\$1 0;
 #X obj 0 0 h 0 0 0;
@@ -50,8 +50,13 @@ obj 0 20 dummy \;;
 clear \, obj 0 0 fi \$1 0 0 \; pd-d-\$1 clear \, obj 0 0 d \$1 0 0
 \; pd-h-\$1 clear \, obj 0 0 h \$1 0 0 \; pd-p-\$1 clear \, obj 0 0
 p \$1 0.5 \;;
+#X obj 290 101 expr 8000/$f1;
+#X obj 290 79 r v\$1;
+#X obj 290 123 s~ ran\$1;
+#X msg 386 76 8;
 #X connect 0 0 10 0;
 #X connect 1 0 11 0;
+#X connect 1 0 35 0;
 #X connect 2 0 17 0;
 #X connect 3 0 18 0;
 #X connect 4 0 19 0;
@@ -68,3 +73,6 @@ p \$1 0.5 \;;
 #X connect 20 0 24 0;
 #X connect 27 0 28 0;
 #X connect 28 0 7 0;
+#X connect 32 0 34 0;
+#X connect 33 0 32 0;
+#X connect 35 0 32 0;
