@@ -28,9 +28,3 @@ For example, you can build an external tool in gedit with this script:
 - Open tuto.gede with your editor
 - That's it, follow the tutorial and it should work :)
 
-## Add on 0.3.2
-- All samples expression % total samples.
-- samples slicer and granular sequencers examples.
-
-## Fixed on 0.3.1
-- FX chain is not cleared when a new `c` or `w` message arrives.
