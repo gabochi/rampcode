@@ -1,4 +1,4 @@
-#N canvas 1 137 785 444 10;
+#N canvas 309 272 785 444 10;
 #X obj 8 153 r c\$1;
 #X obj 553 -2 loadbang;
 #X obj 9 238 r f\$1;
@@ -10,21 +10,26 @@
 #X obj 154 -4 r l\$1;
 #X obj 389 170 list prepend \$1;
 #X obj 8 172 list prepend \$1;
-#X obj 553 18 list prepend \$1;
-#N canvas 203 435 366 71 code-\$1 0;
-#X obj 0 0 code 0 0;
+#X obj 553 38 list prepend \$1;
+#N canvas 201 435 366 71 code-\$1 0;
+#X obj 0 0 code 0 ((sin($v1/((1+$v2*4%4)+4))*sin($v1/1000)+sin($v1/((1+$v2*4%4)+4)*3)*sin($v1/1200)+sin($v1/((1+$v2*4%4)+4)*5/2)*sin($v1/800))*0.1*pow(1-$v1%(8000/1)/(8000/1)\\\,1)+sin($v1/((1+$v2*4%4)+4)/2+sin($v1/((1+$v2*4%4)+4)/4)*sin($v1/1600)*6)*0.6*pow(1-$v1%1000/1000\\\,2))*($v2<0.5)
+;
+#X obj 0 20 dummy;
 #X restore 454 -2 pd code-\$1;
 #N canvas 149 371 366 71 fi-\$1 0;
 #X obj 0 0 fi 0 0 0;
 #X restore 454 18 pd fi-\$1;
 #N canvas 151 371 366 71 d-\$1 0;
-#X obj 0 0 d 0 0 0;
+#X obj 0 0 d 0 0.25 125*3;
+#X obj 0 20 dummy;
 #X restore 454 38 pd d-\$1;
 #N canvas 105 389 366 71 h-\$1 0;
-#X obj 0 0 h 0 0 0;
+#X obj 0 0 h 0 1 $v2*9999;
+#X obj 0 20 dummy;
 #X restore 454 58 pd h-\$1;
 #N canvas 153 371 366 71 p-\$1 0;
-#X obj 0 0 p 0 0.5;
+#X obj 0 0 p 0 ($v2*0.5-0.25)+0.5 0;
+#X obj 0 20 dummy;
 #X restore 454 78 pd p-\$1;
 #X obj 9 260 list prepend \$1;
 #X obj 9 350 list prepend \$1;
@@ -46,14 +51,17 @@ dummy \;;
 obj 0 20 dummy \;;
 #X msg 8 192 \; pd-code-\$1 clear \, obj 0 0 code \$1 \$2 \, obj 0
 20 dummy \;;
-#X msg 553 38 \; pd-code-\$1 clear \, obj 0 0 code \$1 0 \; pd-fi-\$1
+#X msg 553 58 \; pd-code-\$1 clear \, obj 0 0 code \$1 0 \; pd-fi-\$1
 clear \, obj 0 0 fi \$1 0 0 \; pd-d-\$1 clear \, obj 0 0 d \$1 0 0
 \; pd-h-\$1 clear \, obj 0 0 h \$1 0 0 \; pd-p-\$1 clear \, obj 0 0
 p \$1 0.5 \;;
 #X obj 290 101 expr 8000/$f1;
 #X obj 290 79 r v\$1;
 #X obj 290 123 s~ ran\$1;
-#X msg 386 76 8;
+#X msg 507 121 8;
+#X obj 691 16 r clr;
+#X obj 691 38 sel \$1;
+#X obj 650 16 sel 8;
 #X connect 0 0 10 0;
 #X connect 1 0 11 0;
 #X connect 1 0 35 0;
@@ -76,3 +84,7 @@ p \$1 0.5 \;;
 #X connect 32 0 34 0;
 #X connect 33 0 32 0;
 #X connect 35 0 32 0;
+#X connect 36 0 37 0;
+#X connect 36 0 38 0;
+#X connect 37 0 11 0;
+#X connect 38 0 11 0;
