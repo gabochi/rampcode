@@ -1,3 +1,6 @@
+## 0.3.4
+Add `clr` msgs to clear one or all channels.
+
 ## 0.3.3
 `X`, `#` and `'` start counting from 1.
 
