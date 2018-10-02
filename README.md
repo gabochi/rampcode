@@ -1,5 +1,5 @@
 # Rampcode
-Rampcode is a bytebeat inspired language for livecoding written in Pure Data. It differs from other lc languages in the sense that you can construct the synthesis from -almost- zero yourself, all output is a result of a function of time. So, the limit is your imagination. I've made it 'cos I do livecoding and I love to experiment without presets or close boundaries.
+Rampcode is a bytebeat inspired language for livecoding written in Pure Data, it is focused on synthesis and achieving complex results from simple operations. It differs from other lc languages in the sense that you can construct the synthesis from -almost- zero yourself, all output is a result of a function of time. So, the limit is your imagination. I've made it 'cos I do livecoding and I love to experiment without presets or close boundaries.
 
 ## Requirements
 - Pure Data (tested on vanilla and l2ork)
@@ -15,7 +15,7 @@ Rampcode is a bytebeat inspired language for livecoding written in Pure Data. It
 
 `autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>`
 
-(and optional):
+(and optionally):
 
 `autocmd BufNewFile,BufRead *.gede set syntax=haskell`
 
@@ -26,5 +26,4 @@ For example, you can build an external tool in gedit with this script:
 
 - Open rampcode-xxx.pd in Pure Data
 - Open tuto.gede with your editor
-- That's it, follow the tutorial and it should work :)
-
+- That's it, check the demo and other documentations
