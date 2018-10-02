@@ -1,3 +1,9 @@
+## 0.4.0
+- pseudo random from ramp (no additional noise~ object)
+- synthax: e,i,#,x,X always need 2 args now: <subd><curve/range/seed>
+- hex digits. example: #8F (count to 16)
+- new demo and documentation
+
 ## 0.3.4
 Add `clr` msgs to clear one or all channels.
 
