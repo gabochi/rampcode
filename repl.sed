@@ -32,10 +32,10 @@ s_I_int_g
 
 # Hex
 
-s_A_10_g
-s_B_11_g
-s_C_12_g
-s_D_13_g
-s_E_14_g
-s_F_15_g
+s_A_11_g
+s_B_12_g
+s_C_13_g
+s_D_14_g
+s_E_15_g
+s_F_16_g
 
