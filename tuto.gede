@@ -1,44 +1,26 @@
-"THE RAMP"
+"ENVELOPES 
+ eAB / iAB	(cycle/A)^B
 
-"`r` sets the ramp speed (in cycles per second = hz)"
+COUNTER
+#AB		(cycle/A)%B+1
 
-"Everything here is a function of that ramp, so changing it will affect all"
-"Try different speeds from time to time to change the atmosphere completely"
+RANDOM
+ xAB		random (cycle/A) seed B
+ XAB		random integer %B
 
-"1 is the default"
+SAMPLES
+ lA @B;		load B file in channel A
+ wA @B;		read A channel samples as B
+"
 
+
+"RAMP, CHANNEL, CLEAR"
 
 r @ 1;
-
-"CHANNELS"
-
-"You can use many channels but we'll work just with one ;)"
-"Use `c` for channel assignment. Separate arguments with @ and end each msg with `;`"
-
-"SINE, TIME AND AMPLITUDE"
-
-"`s()` is a sine function"
-
-"`t` is the ramp, a time counter (+8000 per cycle)"
-
-"`*` here works as amplitude"
-
-"`cl` clears the channel"
-
-"[ctrl+e] sends the current line to PD"
-
 c0 @ s(t) * 0.1;
 cl @ 0;
 
 "ENVELOPES"
-
-"You can add an envelope before or after the *"
-
-"`e` or `i` must be followed with two arguments:"
-
-"<subdivission><curve>"
-
-"These arguments should be one character long and an hex number, from 1 to F"
 
 c0 @ s(t) * 0.1 * e41;
 c0 @ s(t) * 0.1 * e4F;
@@ -46,18 +28,12 @@ c0 @ s(t) * 0.1 * e12;
 
 c0 @ s(t) * 0.1 * i12;
 
-"Divide or multiply `t` to obtain different pitches"
+"PITCHES"
 
 c0 @ s(t/4) * 0.1 * e44;
 c0 @ s(t*2) * 0.1 * e44;
 
 "COUNTERS"
-
-"`#` is a counter, and it arguments are similar to `e` but the second sets the top of the count:"
-
-"<subdivission><top>"
-
-"You can use it anywhere to build sequences"
 
 c0 @ s(t*#44) * 0.1 * e44;
 c0 @ s(t/#48) * 0.1 * e42;
@@ -69,48 +45,28 @@ c0 @ s(t/#88*2) * 0.1 * e82 * (#88>#85);
 c0 @ s(t/#88*2) * 0.1 * e82 * (#83==1 | #84==1);
 c0 @ s(t/#88*2) * 0.1 * e82 * (#12==1);
 
-
 c0 @ (s(t/#88*2) * 0.1) * (i82 * (#88>5) + e81 * (#88<6));
 
 "RANDOM"
 
-"You have pseudorandom values!"
-
-"x<subdiv><seed> float from 0 to 1"
-"X<subdiv><max>  integer from 0 to <max>"
-
 c0 @ s(t/X48) * 0.1 * e42;
-
 c0 @ s(t/#44*X13) * 0.1 * e44;
-
 c0 @ s(t*t) * e8F * 0.1 * (x20<0.5);
 
-"Use the same seed to relate random events or different seeds to unrelate them"
-"You can concatenate as many expressions as you can handle with `+`"
+"SEEDS"
 
 c0 @ s(t*t) * e8F * 0.1 * (x20<0.5) + s(t/#84/2) * e82 * 0.1 * (x20>0.5);
-
 c0 @ s(t*t) * e8F * 0.1 * (x21>0.5) + s(t/#84/2) * e82 * 0.1 * (x2C>0.5);
 
-"WAVEFORMS AND TIMBRE"
-
-"Get rid of that boring sine!"
-
-"Here you have some examples but it's up to you to experiment with"
-
-"AM, ring, vibrato..."
+"AM AND RING"
 
 c0 @ s(t/8) * s(t/1000) * 0.1;
-
 c0 @ s(t/4) * s(t/500) * 0.1;
-
 c0 @ s(t/8) * s(t/4) * 0.1;
-
 c0 @ s(t/8) * s(t/50) * 0.1;
-
 c0 @ s(t/4) * s(t/50) * 0.1;
 
-"PWM squarewaves"
+"PWM SQUAREWAVES"
 
 c0 @ (s(t/#45)>0) * e41 * 0.1;
 c0 @ (s(t/#45)>0.5) * e41 * 0.1;
@@ -132,13 +88,9 @@ c0 @ s(t/32+ s(t/100) * s(t/930) * 500) * e8F * 0.1;
 c0 @ s(t*#45/3 + s(t/4) * s(t/900) * 6 * e4A) * e42 * 0.1;
 c0 @ s(t*#45/3 + s(t/#14) * s(t/200) * 6 * e8A) * e84 * 0.1;
 
-"There are many ways to distort the signal."
-
-"Since the sine output goes from -1 to 1, you can distort it by using absolute: `a()`"
+"DISTORT"
 
 c0 @ a(s(t*#45/6 + s(t/#14/2) * s(t/200) * 6 * e8A)) * e82 * 0.15;
-
-"Modulus `%` is one of the most handy operators here, plus it works excellent as a distortion like a sample&hold"
 
 c0 @ s(t/#25) * 100 % 10 / 10 * 0.1 * e22;
 
@@ -150,7 +102,7 @@ c0 @ s(t/#25) * 1001 % 1000 / 1000 * 0.1 * e22;
 
 c0 @ s(t/#25) * 1010 % 1000 / 1000 * 0.1 * e22;
 
-"Now that we're getting noisy, try this:"
+"NOISE"
 
 c0 @ s(t*t) * 0.1 * eFF;
 
@@ -166,32 +118,18 @@ c0 @ s(t*(t%X4F)) * 0.025;
 
 "COOL DUBSTEP EXAMPLE"
 
-"Everything we learned so far into a dubstep algorithm"
-
 c0 @ s(t/8 + s(t/16) * 6 * e86) * e82 * (#8F==1 | x82>0.99) * 0.3 + s(t*s(t)) * s(t/700) * 0.1 * e85 * (x41<0.7) + s(t*s(t%32)) * e81 * (#8F==9) * 0.15 + a( s(t/32 + s(t/32) * (x1E*10) * s(t/ (x2F*1000) )) ) * 0.25 * (X43!=1);
 
-"...just for fun, run the following line:"
+"EFFECT CHAIN"
+
 d0 @ (x26<0.5) * 0.7 @ x87 * 25; h0 @ (x19<0.25) @ X18*1000; p0 @ x8D*0.33+0.33;
-
-"EFFECTS CHAIN"
-
-"Noticed the difference?"
-"Well, that's because we add some effects to the channel"
-
-"Let's clear the channel and slow down a bit"
 
 cl@0;
 
-"CENTERED FREQUENCY FILTER"
-
-"f<channel> @ <q> @ <frequency> ;"
-
-"q can't be an expression!"
-"Careful not to run the synth line before the filter (it's too loud!)"
+"VCF"
 
 f0 @ 6 @ 150;
 
-"Some retro synth strings to check the VCF effect"
 c0 @ (s(t/8/2)>s(t/9000)*0.5) *0.3 + (s(t/6)>s(t/1000)*0.5) *0.3 + (s(t/5*2)>s(t/450)*0.5) *0.4;
 
 f0 @ 20 @ x40*9999;
@@ -200,97 +138,60 @@ cl@0;
 
 "TIME VARIABLE FEEDBACK DELAY"
 
-"This one is very powerfull"
-
-"d<channel>@ <feedback> @ <delay in ms> ;"
-
-"You can use the 1000/<ramp speed>/<subdiv> to adjust the tempo"
-
 c0 @ s(t/(#45+1)) * e44 * 0.1;
 
 d0 @ 0.5 @ 1000/1/8;
-
 d0 @ x81 @ 1000/1/8;
-
 d0 @ (x81>0.5)*0.5 @ 1000;
-
 d0 @ 0.25 @ t%1000;
-
 d0 @ 0.25 @ t%100;
-
 d0 @ 0.5 @ a(s(t/8000))*100;
-
 d0 @ 0.5 @ a(s(t/50))*5;
-
 d0 @ x41*0.9 @ x82*50;
 
 "SAMPLE AND HOLD"
-
-"h<ch> @ <wet/dry> @ <hold frq> ;"
 
 cl@0;
 
 c0 @ (s(t/(#17|#14))+s(t/4/#52)) * 0.1 *e54;
 
 h0 @ 1 @ 2000;
-
 h0 @ X52-1 @ 4000;
-
 h0 @ 1 @ X5F*500;
 
 "STEREO PANINNG"
 
-"p<ch> @ <0-1>"
-
-"0.5 is the center (default)"
-
 p0@ x50;
-
 p0@ x50*0.5+0.25;
-
 p0@ x50*0.33+0.33;
 
 cl@0;
 
 "SAMPLE FILES MANIPULATION"
 
-"Ok, we're almost done. Just wanted to say that you can handle wave files!"
-
-"use `l` to load a file into a channel and `w` to play it:"
-
-"<amp> @ <read expression> ;"
-
-"W = total samples in the file"
-
 l0@1; 
 
 w0@0.25 @ t*5;
-
 w0@0.25 @ t*2.5;
-
 w0@0.25 @ t*10;
-
 w0@0.25 @ t*5%(8000*5);
-
 w0@0.25 @ i11*(W/3.3);
-
 w0@0.25 @ i41*(W/16)+W*x10;
-
 w0@0.25 @ t/2+t*5%1000;
-
 w0@0.25 * e41 @t/2+t*5%1000;
-
-"DO NOT GIVE FLOAT VALUES TO MODULUS"
-"That would crash Vanilla"
-"This is the right way (use integers):"
 
 w0@0.25@t+t*5%(X4F*100);
 
-"WELL, I think that was a lot"
-"Again, just for fun, let's add some groove..."
+"FINAL EXAMPLE"
 
 r@0.9; w0 @ 0.25*(x43<0.8) @ t+t*5%(X48*100); c1 @ s(t/8 + s(t/16) * X8F * 20 * e8A) * (#88>#86)*e81 * 0.08 + s(t*s(t))*s(t/700)*e86*0.25*(#88<=#86) + (s(t*#13/#F5)>s(t/(x14*1000)))*0.075*eF1*(x43>0.8) + s(t*s(t%42))*0.15*e1F;
 
-"If you're already sick, clear all channels with:"
+"BYTEBEAT BONUS TRACK:"
+
 cl@8;
 
+c0 @ ( t & t>>8 ) %64/64 *0.2;
+c0 @ ( t*2 | t>>4 ) %256/256 *0.2;
+c0 @ ( t ^ t%257 ) %256/256 *0.2;
+c0 @ ( t*3 ^ t%250 | t>>4 ) %256/256 *0.2;
+c0 @ ( t & t>>8 & t/16 ) %64/64 *0.2;
