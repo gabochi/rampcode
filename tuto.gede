@@ -1,4 +1,8 @@
-"ENVELOPES 
+"CHANNELS
+cA@B;  expression B for ch A
+cl@A,B,C...; clear
+
+ENVELOPES 
  eAB / iAB	(cycle/A)^B
 
 COUNTER
