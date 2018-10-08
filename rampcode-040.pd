@@ -1,4 +1,4 @@
-#N canvas 524 261 195 243 10;
+#N canvas 522 288 195 243 10;
 #X obj 17 8 netreceive 3005 0 old;
 #N canvas 520 119 450 300 ramp 0;
 #X obj 225 230 s~ ramp;
