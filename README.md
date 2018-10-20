@@ -27,3 +27,6 @@ For example, you can build an external tool in gedit with this script:
 - Open rampcode-xxx.pd in Pure Data
 - Open tuto.gede with your editor
 - That's it, check the demo and other documentations
+
+# VERY IMPORTANT NOTE
+I just replaced `@` for `:` so use `c0: f0: d0: h0: p0: ...` instead of `c0@ f0@ d0@ h0@ p0@ ...`
