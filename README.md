@@ -32,7 +32,7 @@ Remember that **all messages must end with a semicolon (;)**.  Like here:
 These are the possible messages:
 
 ### Expression
-By default, any message is an expression message.  This means that it will update the epxr~ object with the sent content.  Be careful, expression messages can't have any spaces and any colon (,) must go with an escpe char before.  Here you have an expression message example:
+By default, any message is an expression message.  This means that it will update the epxr~ object with the sent content.  Be careful, __expression messages can't have any spaces__ and any colon (,) must go with an escpe char before.  Here you have an expression message example:
 
 `sin($v1)*pow(1-$v1%1000/1000\,8);`
 
