@@ -1,5 +1,5 @@
 # Rampcode
-Rampcode is a synthesis system or technique, inspired by _bytebeat_, that I use for _live coding_.  It works with _Pure Data_.
+Rampcode is a synthesis system or technique, inspired by __bytebeat__, that I use for __live coding__.  It works with __Pure Data__ but the logic behind it is very simple so I think it can be ported or complemented with other languages.
 
 ## Setup
 You'll need Pure Data.  Open the rampcode patch (.pd), it receives messages via *pdsend* (a communication prgram, commonly installed with Pure Data).  
@@ -25,9 +25,9 @@ You can always send the updates from the console like `pdsend 8080 <message>` or
 In fact, you could just edit the expr~ content directly from the patch in Pure Data but, again, won't have any editing or syntax tool, it is really unconfortable.
  
 ## Messages
-Remember that *all messages must end with a semicolon (;)*.  Like here:
+Remember that **all messages must end with a semicolon (;)**.  Like here:
 
-`set 0.1;`
+`set 1;`
 
 These are the possible messages:
 
@@ -45,6 +45,7 @@ Set messages change the pitch, affecting both, the tone and the speed.  By defau
 If you want to record the output, the patch will create a randomly named wave file (something like 4213.wav).
 
 `rec 1;` Starts recording.
+
 `rec 0;` Stop the recording.
 
 ## More
