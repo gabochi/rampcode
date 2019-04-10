@@ -2,11 +2,11 @@
 Rampcode is a synthesis system or technique, inspired by __bytebeat__, that I use for __live coding__.  It works with __Pure Data__ but the logic behind it is very simple so I think it can be ported or complemented with other languages.
 
 ## Setup
-You'll need Pure Data.  Open the rampcode patch (.pd), it receives messages via *pdsend* (a communication prgram, commonly installed with Pure Data).  
+You'll need **Pure Data**, you can download it for any system since it's free and is present on most Linux repositories.  Open the rampcode patch, it receives messages via **pdsend** (a communication program, commonly installed with Pure Data).  
 
 I will tell you how I do it but you can find the way that you prefer.
 
-I use *gedit* editor and define an external tool, a simple script as follows:
+I use **Gedit** (A simple Linux editor) and define an external tool with a script as follows:
 
 ~~~~
 #!/bin/sh
@@ -16,7 +16,7 @@ echo $GEDIT_CURRENT_LINE | pdsend 8080
 
 And assign a shurtcut key (like CTRL+. or whatever).  So, every time I press CTRL+., the current line is sent as a message to the rampcode patch.
 
-Perl or Haskell syntax highlighting works fine.
+Also, Perl (or Haskell, maybe Lisp) syntax highlighting works fine.
 
 ### Using the command line
 
@@ -25,7 +25,7 @@ You can always send the updates from the console like `pdsend 8080 <message>` or
 In fact, you could just edit the expr~ content directly from the patch in Pure Data but, again, won't have any editing or syntax tool, it is really unconfortable.
  
 ## Messages
-Remember that **all messages must end with a semicolon (;)**.  Like here:
+Remember that **all messages must end with a semicolon (;)** like here:
 
 `set 1;`
 
