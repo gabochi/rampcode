@@ -1,2 +1,0 @@
-autocmd BufNewFile,BufRead *.gede nnoremap <buffer> <c-e> :silent exec '!./sendline.sh ' . shellescape(getline('.'), 1)<CR>:redraw!<CR>
-autocmd BufNewFile,BufRead *.gede set syntax=haskell

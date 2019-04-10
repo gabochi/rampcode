@@ -1,8 +1,0 @@
-#N canvas 121 103 450 300 10;
-#X obj 173 8 r~ ramp;
-#X obj 172 70 clip~ -1 1;
-#X obj 172 92 s~ tofi-\$1;
-#X obj 172 48 expr~ \$2;
-#X connect 0 0 3 0;
-#X connect 1 0 2 0;
-#X connect 3 0 1 0;
