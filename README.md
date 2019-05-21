@@ -4,7 +4,7 @@ Rampcode is a synthesis system or technique, inspired by __bytebeat__, that I us
 ## Setup
 You'll need **Pure Data**, you can download it for any system since it's free and is present on most Linux repositories.  Open the rampcode patch, it receives messages via **pdsend** (a communication program, commonly installed with Pure Data).  
 
-I will tell you how I do it but you can find the way that you prefer.
+I will tell you how I do it but you can find the way that you prefer.  If you use Atom, skip this part.
 
 I use **Gedit** (A simple Linux editor) and define an external tool with a script as follows:
 
@@ -17,6 +17,10 @@ echo $GEDIT_CURRENT_LINE | pdsend 8080
 And assign a shurtcut key (like CTRL+. or whatever).  So, every time I press CTRL+., the current line is sent as a message to the rampcode patch.
 
 Also, Perl (or Haskell, maybe Lisp) syntax highlighting works fine.
+
+## Atom plugin
+
+Thanks to Reo Matsumoto, you can now do some rampcoding in Atom: https://github.com/pndmix/atom-rampcode
 
 ### Using the command line
 
