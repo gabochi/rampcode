@@ -1,0 +1,66 @@
+#N canvas 79 103 850 437 10;
+#X obj 344 406 dac~;
+#X obj 316 57 netreceive 8080;
+#X obj 121 389 s~ ramp;
+#X obj 346 290 r~ exp;
+#X obj 346 323 clip~ -1 1;
+#X obj 346 346 hip~ 5;
+#X obj 354 369 lop~ 10000;
+#N canvas 1 56 450 300 seq 0;
+#X obj 0 0 r~ ramp;
+#X obj 0 300 s~ seq;
+#X obj 0 50 expr~ $v1;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 236 319 pd seq;
+#N canvas 1 56 450 300 exp 0;
+#X obj 0 0 r~ seq;
+#X obj 0 50 expr~ 0;
+#X obj 0 300 s~ exp;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 236 342 pd exp;
+#X msg 607 324 \; pd-exp clear \, obj 0 0 r~ seq \, obj 0 50 expr~
+\$1 \, obj 0 300 s~ exp \, connect 0 0 1 0 \, connect 1 0 2 0 \;,
+f 22;
+#X obj 443 300 list;
+#X obj 607 300 list;
+#X msg 443 325 \; pd-seq clear \, obj 0 0 r~ ramp \, obj 0 50 expr~
+\$1 \, obj 0 300 s~ seq \, connect 0 0 1 0 \, connect 1 0 2 0 \;,
+f 23;
+#X msg 26 35 \; pd dsp 1;
+#X obj 26 12 loadbang;
+#X obj 105 169 print;
+#X obj 237 409 tabwrite~ moni;
+#X obj 237 366 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 26 74 array define moni 5000;
+#X obj 237 386 metro 130;
+#X obj 316 80 route cps rate hip lop ramp reset;
+#X msg 478 122 0;
+#X obj 120 320 phasor~ 0.125;
+#X obj 120 355 *~ 320000;
+#X text 735 9 Rampcode 2 - BETA;
+#X connect 1 0 15 0;
+#X connect 1 0 20 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 16 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 6 0 0 1;
+#X connect 10 0 12 0;
+#X connect 11 0 9 0;
+#X connect 14 0 13 0;
+#X connect 17 0 19 0;
+#X connect 19 0 16 0;
+#X connect 20 0 22 0;
+#X connect 20 1 23 1;
+#X connect 20 2 5 1;
+#X connect 20 3 6 1;
+#X connect 20 4 10 0;
+#X connect 20 5 21 0;
+#X connect 20 6 11 0;
+#X connect 21 0 22 1;
+#X connect 22 0 23 0;
+#X connect 23 0 2 0;
