@@ -1,0 +1,103 @@
+#N canvas 79 103 477 437 10;
+#X obj 321 198 array define moni 5000;
+#N canvas 1 56 1059 585 patching 0;
+#X obj 379 423 dac~;
+#X obj 316 27 netreceive 8080;
+#X obj 379 320 clip~ -1 1;
+#X obj 545 322 list;
+#X obj 709 322 list;
+#X msg 545 472 \; pd dsp 1;
+#X obj 545 449 loadbang;
+#X obj 292 558 tabwrite~ moni;
+#X obj 322 535 metro 130;
+#X msg 445 234 0;
+#X obj 120 320 phasor~ 0.125;
+#X obj 120 355 *~ 320000;
+#X obj 22 223 print received;
+#N canvas 1 56 450 300 left 0;
+#X obj 0 0 r~ ramp;
+#X obj 0 50 expr~ 0;
+#X obj 0 300 s~ left;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 236 341 pd left;
+#N canvas 1 56 450 300 right 0;
+#X obj 0 0 r~ ramp;
+#X obj 0 50 expr~ 0;
+#X obj 0 300 s~ right;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 236 361 pd right;
+#N canvas 1 56 450 300 ramp 0;
+#X obj 0 0 r~ saw;
+#X obj 0 300 s~ ramp;
+#X obj 0 50 expr~ $v1;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 236 319 pd ramp;
+#X msg 709 346 \; pd-left clear \, obj 0 0 r~ ramp \, obj 0 50 expr~
+\$1 \, obj 0 300 s~ left \, connect 0 0 1 0 \, connect 1 0 2 0 \;,
+f 22;
+#X obj 869 322 list;
+#X msg 869 346 \; pd-right clear \, obj 0 0 r~ ramp \, obj 0 50 expr~
+\$1 \, obj 0 300 s~ right \, connect 0 0 1 0 \, connect 1 0 2 0 \;
+, f 22;
+#X obj 121 389 s~ saw;
+#X msg 545 347 \; pd-ramp clear \, obj 0 0 r~ saw \, obj 0 50 expr~
+\$1 \, obj 0 300 s~ ramp \, connect 0 0 1 0 \, connect 1 0 2 0 \;,
+f 23;
+#X obj 379 287 r~ left;
+#X obj 399 380 clip~ -1 1;
+#X obj 399 347 r~ right;
+#X obj 292 466 +~;
+#X obj 292 489 /~ 2;
+#X obj 323 518 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 316 80 route hz amp --- --- ramp reset l r;
+#X connect 1 0 12 0;
+#X connect 1 0 27 0;
+#X connect 2 0 24 0;
+#X connect 2 0 0 0;
+#X connect 3 0 20 0;
+#X connect 4 0 16 0;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 1;
+#X connect 10 0 11 0;
+#X connect 11 0 19 0;
+#X connect 17 0 18 0;
+#X connect 21 0 2 0;
+#X connect 22 0 24 1;
+#X connect 22 0 0 1;
+#X connect 23 0 22 0;
+#X connect 24 0 25 0;
+#X connect 25 0 7 0;
+#X connect 26 0 8 0;
+#X connect 27 0 10 0;
+#X connect 27 1 11 1;
+#X connect 27 4 3 0;
+#X connect 27 5 9 0;
+#X connect 27 6 4 0;
+#X connect 27 7 17 0;
+#X connect 27 8 4 0;
+#X connect 27 8 17 0;
+#X restore 175 55 pd patching;
+#X obj 17 33 cnv 15 150 60 empty empty RAMCODE_v1.0.0 20 12 0 14 -203904
+-66577 0;
+#X obj 17 247 cnv 15 250 150 empty empty Contact/Networks 20 12 0 14
+-261234 -66577 0;
+#X obj 17 98 cnv 15 400 80 empty empty What_is_this? 20 12 0 14 -204800
+-66577 0;
+#X obj 17 183 cnv 15 300 60 empty empty empty 20 12 0 14 -261682 -66577
+0;
+#X text 36 60 by Gabriel Vinazza;
+#X text 111 281 Github: /gabochi;
+#X text 21 308 Soundcloud & Bandcamp: /xorgede;
+#X text 99 362 Facebook: /gedeaudiovisual;
+#X text 93 335 Instagram: /gabovinazza;
+#X text 48 148 This patch receives messages through pdsend in port
+8080;
+#X text 19 197 Click on this object to open the oscilloscope ->;
+#X text 84 131 A livecoding system inspired by bytebeat technique.
+;
+#X text 19 216 Read the documentation for further details.;
