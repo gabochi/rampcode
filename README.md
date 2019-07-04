@@ -10,7 +10,10 @@ You can also use another editor with the proper configuration or send messages t
  
 # Valid messages
 
-Every message should end with a semicolon `;`. There are many possible messages but, by default, you can just write an expression and evaluate it like: `$v1%2;`
+Every message should end with a semicolon `;`. 
+
+There are many possible messages but, by default, you can just write an expression and evaluate it like: `$v1%2;`
 
 `$v1` is the input signal and you can check all the possible expressions on the **expr~** object help inside Pure Data.
 
+### Open *cheatsheet.ramp* file for instructions and examples.
