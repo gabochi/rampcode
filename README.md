@@ -1,8 +1,8 @@
 # RAMPCODE
-Rampcode is a live coding system inspired by the bytebeat technique (but careful, it is not the same). It runs in *Pure Data* and, basically, it's all about making synthesis algorithms with logical-mathematical expression using only one variable: an always increasing signal, that is, a ramp (like waveshaping a very slow saw wave LFO with a huge amplitude).
+Rampcode is a live coding system inspired by the bytebeat technique (but careful, it is not the same). It works with *Pure Data* and, basically, it's all about making synthesis algorithms with logical-mathematical expression using only one variable: an always increasing signal, that is, a ramp (like waveshaping a very slow saw wave LFO with a huge amplitude).
 
 # Setup
-The simplest way to use Rampcode is downloading the patch (rampcode.pd) and installing the *Atom package* by Reo Matsumoto. The package is available at https://github.com/pndmix/atom-rampcode, but you can install it easily from *Atom* itself.
+The simplest way to use Rampcode is downloading the patch (*rampcode.pd*) and installing the *Atom package* by Reo Matsumoto. The package is available at https://github.com/pndmix/atom-rampcode, but you can install it easily from *Atom* itself.
 
 Then, you first open the patch in *Pure Data* and then run *Atom*. You toggle the package pressing **Ctrl+Alt+R** and voila! You can now make some noise. Use **Shift+Enter** to evaluate a line and **Alt+.** to stop the sound in any point.
  
