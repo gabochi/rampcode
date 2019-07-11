@@ -16,4 +16,7 @@ There are many possible messages but, by default, you can just write an expressi
 
 `$v1` is the input signal and you can check all the possible expressions on the **expr~** object help inside Pure Data.
 
-### Open *cheatsheet.ramp* file for instructions and examples.
+### Open *cheatsheet.ramp* file for instructions and examples or take this short tutorial:
+
+[![Rampcode Tutorial Video](https://img.youtube.com/vi/UVPiRbt5MBc/0.jpg)](https://www.youtube.com/watch?v=UVPiRbt5MBc)
+
