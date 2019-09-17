@@ -1,0 +1,22 @@
+#N canvas 724 245 450 70 10;
+#X obj 9 14 text define -k \$0-code;
+#A set;
+#N canvas 339 282 450 300 cosas 0;
+#X obj 161 105 text get \$0-code;
+#X msg 161 82 0;
+#X obj 7 42 loadbang;
+#X msg 7 64 \; pd dsp 1;
+#N canvas 1 56 450 300 mas-cosas-\$0 0;
+#X restore 7 11 pd mas-cosas-\$0;
+#X obj 161 130 list prepend \$0;
+#X obj 122 20 keyname;
+#X obj 161 59 sel Alt_L;
+#X msg 161 160 \; pd-mas-cosas-\$1 clear \, obj 0 50 rampcode-fx-ext
+\$2 \$3 \$4 \$5 \$6 \, obj 0 0 dummy \;, f 28;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 5 0 8 0;
+#X connect 6 1 7 0;
+#X connect 7 0 1 0;
+#X restore 9 37 pd cosas;
