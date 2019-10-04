@@ -35,7 +35,7 @@
 #X text 541 5 Cycles per second;
 #X text 9 182 Read text object or msgs;
 #X text 810 259 Output wave;
-#X text 853 342 Custom EQ;
+#X text 853 342 Custom eq;
 #X text 950 5 Init sound \, clear subp;
 #X text 800 609 Subp for external dynamic creation;
 #X text 102 630 Dynamic creation;
