@@ -1,0 +1,8 @@
+#N canvas 1 56 450 300 24;
+#X obj 142 60 r~ ramp;
+#X obj 142 99 expr~ \$1;
+#X obj 142 138 expr~ \$2;
+#X obj 142 176 s~ wave;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
