@@ -1,3 +1,3 @@
 # RAMPCODE
-Live-coding system. New documentation soon
+Live-coding system. New documentation soon...
 
