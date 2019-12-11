@@ -1,0 +1,33 @@
+#N canvas 462 252 450 300 10;
+#X obj 251 42 phasor~;
+#X obj 251 19 r~ rex;
+#X obj 251 65 s~ exp;
+#X obj 15 16 netreceive 8080;
+#X msg 15 107 \; pd-ramp clear \, obj 0 0 expr~ \$1 \, obj 0 30 s~
+rex \, connect 0 0 1 0 \;;
+#N canvas 1 56 450 300 ramp 0;
+#X restore 14 164 pd ramp;
+#N canvas 1 56 450 300 exp 0;
+#X restore 14 185 pd exp;
+#X msg 72 214 \; pd-exp clear \, obj 0 0 r~ exp \, obj 0 30 expr~ \$1
+\, obj 0 60 expr~ \$2 \, obj 0 90 clip~ -1 1 \, obj 0 120 dac~ \, connect
+0 0 1 0 \, connect 1 0 2 0 \, connect 2 0 3 0 \, connect 3 0 4 0 \,
+connect 3 0 4 1 \;;
+#X msg 139 64 \; pd dsp 1;
+#X obj 72 183 list;
+#X obj 139 15 loadbang;
+#X obj 15 63 list;
+#X obj 15 40 route hz c;
+#X obj 43 84 v c;
+#X msg 99 45 8000;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 12 0;
+#X connect 9 0 7 0;
+#X connect 10 0 8 0;
+#X connect 10 0 14 0;
+#X connect 11 0 4 0;
+#X connect 12 0 11 0;
+#X connect 12 1 13 0;
+#X connect 12 2 9 0;
+#X connect 14 0 13 0;
