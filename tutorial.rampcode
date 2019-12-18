@@ -11,7 +11,7 @@
 -- Many of these techniques can be adapted to Greggman's html5bytebeat (select "floatbeat")
 -- https://greggman.com/downloads/examples/html5bytebeat/html5bytebeat.html
 
--- 1. CHAIN AND SYNTHAX
+-- 1. CHAIN AND SYNTAX
 
 -- Rampcode is based on bytebeat, so basically you have loop with an increasing value (a counter or ramp) and all audio output is a direct result of an operation over the actual value of that ramp, a function.
 
