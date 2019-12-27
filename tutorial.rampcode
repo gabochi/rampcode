@@ -11,7 +11,7 @@
 // Many of these techniques can be adapted to Greggman's html5bytebeat (select "floatbeat")
 // https://greggman.com/downloads/examples/html5bytebeat/html5bytebeat.html
 
-// 1. CHAIN AND SYNTHAX
+// 1. CHAIN AND SYNTAX
 
 // Rampcode is based on bytebeat, so basically you have loop with an increasing value (a counter or ramp) and all audio output is a direct result of an operation over the actual value of that ramp, a function.
 
@@ -138,10 +138,41 @@ $v1 * c * 8
 ($v1 * c * 8)  + if($v1*8*8%4,$v1*c*8%8*abs(sin($v1)*5*($v1*8%4%2)),0)
 @ ($v1*($v1/c%3%2+1)+sin($v1*80*($v1*8/c%2*9+1)/c)*2) / ($v1*($v1/c%5%4%3%2*39+4)/c%5+2) / ($v1/0.75/c%4+1) * ($v1/1.5/c%2+1) /($v1/c%3%2*2+2) %2 * pow(1-$v1*($v1*1.5/c%2*4+4)%c/c, $v1*8/c%3%2*4+1) * 0.42
 + sin(2000/($v1*2%c)) * 0.5
-+ sin($v1 * sin($v1)) * !(3000 < $v1*(8-$v1*4/c%3%2*4)%c) * 0.12
++ sin($v1 * sin($v1)) * !(3000 < $v1*(8-$v1*4/c%3%2*4)%c) * 0.12.
 + sin($v1 * sin($v1%33)) * (1000 > $v1%c) * 0.16;
 // well, that melody drove me here
 // let's pretend this never happened...
+
+// You can also work with semitones aproximation (.0834), make chords and scales:
+
+// $v1 <*,/> [int](1 + .0834 * X)
+
+// Try changing the 2.25
+
+$v1*c*8
+@
+$v1/8*(1+.0834*int($v1*8/c%5 *    2.25     ))%2*0.25;
+
+// Here, the opossite direction, change the 3
+
+$v1*c*8
+@
+$v1/4
+/ (1+.0834*int($v1*16/c%3 * 3  + ($v1/2/c%3) ))%2*0.25;
+
+// Combine the intergers and the semitones aproximation
+
+$v1*c*8
+@
+$v1/4/($v1*2/c%3+1)
+*(1+.0834*int($v1*8/c%5*  2.25  ))%2*0.25;
+
+$v1*c*8
+@
+$v1 / ($v1/c%4+1)
+/ (1+.0834*int($v1*32/c%3 * 3  + ($v1/2/c%3) ))%2*0.25;
+
+
 
 // 4. ENVELOPES
 
@@ -149,7 +180,7 @@ $v1 * c * 8
 
 // (1 - $v1 * (measure) %c/c)
 
-$v1 * c * 8 @ $v1%2 * (1-$v1*2%c/c) * 0.2;
+$v1 * c * 8 @ $v1%2 * (1-$v1    *2   %c/c) * 0.2;
 // Change the *2 and try different measures.
 
 $v1 * c * 8 @ $v1%2 * pow(1-$v1%c/c , 10) * 0.2;
@@ -179,22 +210,26 @@ hz @ 1.0 / 8;
 + sin($v1/16 + sin($v1/16*3) * ($v1*8/c%3*2+1) * pow(1-$v1*4%c/c, 1.5)) * 0.075 * 1;
 
 // Ok, hope that was fun... Now try this:
-( ($v1 + 800 *0) * c * 8 ) + $v1*c %5 *0
+( ($v1 + c/8 *0) * c * 8 ) + $v1*c*8 %5 *2*0
 // Two ways to introduce some distortion
-// Change the +800 (careful with this one, don't use minus nor larger numbers!) and the %5, activate and alter the effects with * (*1 *2 *3, etc)
+// Change the c/8 (careful with this one, don't use minus nor large numbers!) and the %5, activate and alter the effects with * (*1 *2 *3, etc)
 @ sin(4000/($v1*2%c)) * 0.25 * 1
 + sin($v1*sin($v1*($v1/c%2*8+1)%($v1*8/c%7))) * pow(1-$v1*8%c/c, $v1*8/c%9+1) * 0.15 * 1
 + sin($v1*sin($v1%20)) * pow(1-$v1%c/c, 20) * 0.2 * 1
 + sin($v1/16 + sin($v1/16*3) * ($v1*8/c%3*2+1) * pow(1-$v1*4%c/c, 1.5)) * 0.075 * 1;
 
-( $v1 * c * 8 ) / 1 % (c / ($v1*8%2*2+2) ) + $v1*8*8%5*(c/8)
+($v1*c*8) /1
+% (c / ($v1*8%2*2+2) ) + $v1*8*8%5*(c/8)
 // Sequence length and offset combination with counters
 @ sin(4000/($v1*2%c)) * 0.25 * 1
 + sin($v1*sin($v1*($v1/c%2*8+1)%($v1*8/c%7))) * pow(1-$v1*8%c/c, $v1*8/c%9+1) * 0.15 * 1
 + sin($v1*sin($v1%20)) * pow(1-$v1%c/c, 20) * 0.2 * 1
 + sin($v1/16 + sin($v1/16*3) * ($v1*8/c%3*2+1) * pow(1-$v1*4%c/c, 1.5)) * 0.075 * 1;
 
-( $v1 * c * 8 ) / ($v1*8*4%3*0.5+1) % (c / ($v1*8%2*2+2) ) + $v1*8*8%5*(c/8)
+($v1*c*8)
+/ ($v1*8*4%3*0.5+1)
+% (c / ($v1*8%2*2+2) )
++ $v1*8*8%5*(c/8)
 // Same but also with pitch
 @ sin(4000/($v1*2%c)) * 0.25 * 1
 + sin($v1*sin($v1*($v1/c%2*8+1)%($v1*8/c%7))) * pow(1-$v1*8%c/c, $v1*8/c%9+1) * 0.15 * 1
@@ -208,9 +243,8 @@ hz @ 1.0 / 8;
 + sin($v1*sin($v1%20)) * pow(1-$v1%c/c, 20) * 0.2 * 1
 + sin($v1/16 + sin($v1/16*3) * ($v1*8/c%3*2+1) * pow(1-$v1*4%c/c, 1.5)) * 0.075 * 1;
 
-// I'll show you one last trick: All this can be handled with an if() to let the ground kick...
+// I'll show you one last trick: All this can be handled with an if() to let the ground kick... $v1*8*8%4 is 0 only on the first 1/8 measure of each pattern (when the kick and snare are!)
 if ($v1*8*8%4, ($v1*c*8)/(3-$v1*4%3)+ $v1*c*8%(sin($v1*4)*10+12)*($v1*8%3%2), $v1*c*8)
---$v1*8*8%4 is 0 only on the first 1/8 measure of each pattern (when the kick and snare are!)
 @ sin(4000/($v1*2%c)) * 0.25 * 1
 + sin($v1*sin($v1*($v1/c%2*8+1)%($v1*8/c%7))) * pow(1-$v1*8%c/c, $v1*8/c%9+1) * 0.15 * 1
 + sin($v1*sin($v1%20)) * pow(1-$v1%c/c, 10) * 0.2 * 1
