@@ -15,7 +15,7 @@ This is not a more 'friendly' bytebeat language, you need some bytebeat knowledg
 
 First, open *patch/rampcode.pd* patch with PD. Then, you can use the *rc.sh* script as a REPL or setup your favorite editor and tell the script to evaluate a certain expression like this: `./rc.sh -e 'expression'`
 
-There is a *log* folder, you can load a previous history like this: `./rc.sh -l logfile`. Then type `history` and use `!n` to repeat *n* command.
+There is a *log* folder, you can load a previous history like this: `./rc.sh -r logfile`. Then type `history` and use `!n` to repeat *n* command.
 
 ---
 
