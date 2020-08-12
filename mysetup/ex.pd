@@ -1,8 +1,0 @@
-#N canvas 741 72 450 300 10;
-#X obj 201 107 r~ ramp;
-#X obj 201 176 s~ out-\$1;
-#X obj 201 130 expr~ \$2;
-#X obj 201 153 expr~ \$3;
-#X connect 0 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
