@@ -17,6 +17,8 @@ First, open *patch/rampcode.pd* patch with PD. Then, you can use the *rc.sh* scr
 
 There is a *log* folder, you can load a previous history like this: `./rc.sh -r logfile`. Then type `history` and use `!n` to repeat *n* command.
 
+For expressions, use `[]` instead of `()` and `lrAOX` instead of `<<>>&|^` to avoid bash errors (`PLMD` for `+-*/` optionally).
+
 ---
 
 # Functions
@@ -63,6 +65,15 @@ Euclidean binary sequencer, returns 1 or 0.
 
 `1` rotation (optional)
 
+### ra
+Random, returns a value between 0 and 1
+
+`ch 1 t*$(ra 11 2)`
+
+`11` speed
+
+`2` seed (optional)
+
 ### hs
 Hex sequencer, similar to `bs` but returns 0-15. Use with `tt`.
 
@@ -84,14 +95,16 @@ Play note 12
 
 `tr10A7Xtr11A3` = `t>>10&7^t>>11&3`
 
+`ch 1 $(tt $(hs ${dor} $(ra 11)M8A7))l1`
+
 #### Scales
 
-aeo, art, dor, fri, har, jon, lid, loc, mli, pma, pmi
+aeo, art, dor, fri, har, jon, lid, loc, mix, pma, pmi
 
 ### vi
 Vibrato
 
-`ch 1 $(tt $(vi 120 4)+24)`
+`ch 1 $(vi 120 4)+$(tt 24)`
 
 `120` speed
 
