@@ -46,7 +46,9 @@ Set 1 cycle per second (default, 60/120/240 bpms).
 ### bs
 Binary sequencer, returns 1 or 0.
 
-`t*$(bs 123 tr10A7)`
+```bash:
+t*$(bs 123 tr10A7)
+```
 
 `123` = `01111011` pattern (since `123>>...` from right to left)
 
