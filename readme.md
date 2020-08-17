@@ -28,7 +28,9 @@ For expressions, use `[]` instead of `()` and `lrAOX` instead of `<<>>&|^` to av
 ### ch
 Send expression a to channel.
 
-`ch 1 t`
+```bash:
+ch 1 t
+```
 
 Send expression `t` to channel 1.
 
