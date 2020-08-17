@@ -28,9 +28,7 @@ For expressions, use `[]` instead of `()` and `lrAOX` instead of `<<>>&|^` to av
 ### ch
 Send expression a to channel.
 
-```bash:
-ch 1 t
-```
+`ch 1 t`
 
 Send expression `t` to channel 1.
 
@@ -46,9 +44,7 @@ Set 1 cycle per second (default, 60/120/240 bpms).
 ### bs
 Binary sequencer, returns 1 or 0.
 
-```bash:
-t*$(bs 123 tr10A7)
-```
+`t*$(bs 123 tr10A7)`
 
 `123` = `01111011` pattern (since `123>>...` from right to left)
 
