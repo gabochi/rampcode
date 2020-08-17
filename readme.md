@@ -89,7 +89,10 @@ Play note 12
 
 `l2` = `<<2`
 
-`ch 1 $(tt 24+$(hs ${pma} tr10A7Xtr11A3))` Pentatonic melody
+```bash
+ch 1 $(tt 24+$(hs ${pma} tr10A7Xtr11A3))
+``` 
+Pentatonic melody
 
 `24+` sets fundamental
 
