@@ -1,0 +1,3 @@
+# RAMPCODE 
+
+A bytebeat tutorial for vim and Pure Data, more documentation soon...
