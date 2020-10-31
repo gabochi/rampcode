@@ -1,0 +1,8 @@
+pd-fe clear, 
+obj 0 0 r~ va, 
+obj 0 30 fexpr~ t=$x1 \; 
+
+\; (o&255)/256,
+obj 0 300 s~ vuelve, 
+connect 0 0 1 0, 
+connect 1 2 2 0;
