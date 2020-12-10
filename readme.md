@@ -1,3 +1,3 @@
 # RAMPCODE 
 
-A bytebeat tutorial for vim and Pure Data, more documentation soon...
+Run the PD patch and then open *tutorial* file for further instructions.

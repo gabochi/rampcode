@@ -305,9 +305,83 @@ pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<2
 # Rocking minor progression
 pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<(t>>3&3|1)
 
-# to be continued..
+# Let's analyze a little. In the number 0x037c, each digit represents a
+# distance in semitones from the fundamental t. Since its prefix 0x indicates
+# it is an hexadecimal value, each digit is represented by four bits: 
+# 1111 binary 
+# = 15 decimal 
+# = F hexadecimal
+# Thats why each counting possition (t>>10&3) is multiplied by 4 (*4). Finally,
+# the &15 restrincts the shifted value to the 0-15 range (one hex digit). See:
+
+# 0x 0    2    7    3    >> 4                  &15 =
+#    0000 0010 0111 0011 >> 4 = 0000 0010 0111 &15 = 0111 = 7
+
+
+(pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<(t>>2&(t>>10&7^t>>12&7|3)) &127 |t>>7&t>>3) ^ ((t*(-t>>7&31)/(1<<(t>>12&1)+2))&-t>>3&128)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # SINE WAVES
 # TABLES
+#
+t*0
+0
+t*n[0x237cfe87>>(-t>>10&7)*4&15]<<2 
+
+(w[t+1024*(t>>10&15^t>>12&7)<<(r[t>>11&255]<0.5)+2&524287-(1<<(t>>13&7)+11)]*0.5+0.5)*128+(w[t<<3&524287]*0.5+0.5)*64
+
+
+t*n[(0x237c>>(t>>(t>>11&15)&3)*4&15)]<<(t>>10&7^t>>11&7&t>>12&3) & t>>5 &- t * ((t>>12&3)*0.5+0.5) >>3 
+
+
+# Your old friend Pitagoras
+#
+# So there was this crazy genius guy who did a lot of things like finding
+# math in physics and, when that didn't work, simply force it and kinda 
+# expulse of his spooky cult anyone who point that.
+#
+# Anyway... The thing is that you can build scales and chords dividing and
+# multiplying t by integers. Our dear powers of two will always give you
+# octaves but check this:
+
+# The first 5 harmonics make a major chord
+t*((t>>12&3)+2) <<1
+
+# And the first 5 subharmonics make a minor one!
+t/((-t>>12&3)+2) <<5
+
+# You can combine these two series and make interesting progressions.
+# After all, you don't need temperament.
+t*((t>>14&3)+1)/((-t>>11&3)+2)  <<3
+t*((t>>11&3)+1)/((-t>>12&3)+2)  <<2 &230 &- t >>3 ^ t>>5
+t*((t>>10&3)+2)/((-t>>13&3)+1)  <<(-t>>13&3) &160
+t*((t>>10&3)+1)/((-t>>12&3)+1)  << (t*1.5>>(t>>14&3)&7|3) 
+
+
+# I will explain the following (someday)
+(t * n[0x0357ce>>((t>>(t>>10&7)+6)\\%((t>>14&3)+4))*4&15] << (t>>11&2)+1  | t/3 >> 3 | t/5 >> 2 & t>>4) | (t<<5&-t>>2&-t>>3)
+
+t * (1+1/((t>>11&3)+1))  <<2 &128
+
+t * sin(t/100) <<3
+
+t/((t/3>>10&3)+2)  <<3 & t*((t/5>>10&3)+1) <<2  & (-t>>3 | t/1.5>>5) | (t*(t>>(t>>12&3)&((1<<(t>>14)\\%5+3)-1)))&64&-t+1024*(t>>13&3)>>4-(t>>12&1)
+
+
+t*n[192>>(t/1.01&3)&63|20] << (t*0.9&3) >> 2 ^ t*.002
+
+
+t*n[0x047b>>(t&3)*4&15]<<(t&3) >>1 ^ t*1.003*n[0x047b>>(t&3)*4&15]<<(t&3) >>1
+
+ | -t*1.001>>4
+
+
+t*n[(0x047b>>(t&3)*4&15)+(t>>16&1)*3] <<1 ^ t*0.999*n[(0x047b>>(t&3)*4&15)+(t>>16&1)*3] <<1
+
+
+t*n[(0x047b>>(t&3)*4&15)+1] <<(t>>11&7) ^ t*1.001*n[(0x047b>>(t&3)*4&15)+1] <<(t>>11&7) | t*1.01*n[1] ^ t*n[1] 
+
+
+t*n[(0x047b>>(t*1.5001&3)*4&15)+(t>>15&3)*5] <<3 ^ t*1.001<<2
+

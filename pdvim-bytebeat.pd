@@ -1,4 +1,4 @@
-#N canvas 256 119 666 424 10;
+#N canvas 70 155 666 424 10;
 #X obj 247 150 clip~ -1 1;
 #X obj 247 173 dac~;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -45,7 +45,7 @@
 #X obj 247 128 r~ vuelve;
 #N canvas 100 169 450 300 fe 0;
 #X restore 248 105 pd fe;
-#X obj 10 110 netreceive 3005 0 old;
+#X obj 467 76 netreceive 3005 0 old;
 #X obj 10 15 loadbang;
 #X obj 538 302 soundfiler;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -61,15 +61,17 @@
 #X msg 10 38 \; pd-fe clear;
 #X obj 247 36 phasor~ 0.015625;
 #X obj 247 59 expr~ $v1*(1<<19);
-#X obj 63 154 v t;
-#X obj 10 134 v a;
-#X obj 10 154 v b;
-#X obj 35 134 v c;
+#X obj 520 120 v t;
+#X obj 467 100 v a;
+#X obj 467 120 v b;
+#X obj 492 100 v c;
 #X obj 47 363 tabwrite~ r;
-#X obj 35 154 v d;
-#X obj 63 134 v o;
+#X obj 492 120 v d;
+#X obj 520 100 v o;
 #X obj 538 323 v l;
 #X msg 538 281 read -resize \$1 w;
+#X obj 10 131 array define n;
+#X msg 10 109 resize 128 \, read notes.txt;
 #X connect 0 0 1 0;
 #X connect 0 0 1 1;
 #X connect 3 0 14 0;
@@ -77,6 +79,7 @@
 #X connect 6 0 0 0;
 #X connect 9 0 17 0;
 #X connect 9 0 16 0;
+#X connect 9 0 30 0;
 #X connect 10 0 27 0;
 #X connect 12 0 28 0;
 #X connect 13 0 12 0;
@@ -85,3 +88,4 @@
 #X connect 18 0 19 0;
 #X connect 19 0 5 0;
 #X connect 28 0 10 0;
+#X connect 30 0 29 0;
