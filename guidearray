@@ -1,0 +1,387 @@
+# SETUP
+
+# Run `:source vimscript.vim` command to start
+# Make sure pdvim-bytebeat.pd is opened in Pure Data
+
+# Now you can press CTRL+E above the expression you want to evaluate
+# Be careful, doing it at the end of the line will stop sound!
+
+# Try this testing expression:
+t << (t>>10&3^t>>12&3) | t>>5 & t>>3
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# THE t VARIABLE
+
+# t is a counter, it increases aproximately +8000 per secod by default.
+# Since we will build everything from it, you need to understand that it
+# will work as both, melodic and rhythmic fundamental.
+# Although it keeps growing, the audio output is truncated, jumping back
+# to 0 when 256 is reached. So, if you simply evaluate t you'll hear a 
+# low saw-tooth wave.
+
+t	\
+
+# This 0-255 amplitude range is why this is called BYTE beat.
+# One bit is a binary digit, 0 or 1.
+# One byte is eight bits long, from 00000000 to 11111111 (255 decimal)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# BIT SHIFTING
+
+# Shifting is moving a binary representation X places to the left or right.
+
+# 0110 >> 1 = 0011
+# 0110 << 1 = 1100
+
+# It is very similar to multiplying and dividing by powers of two.
+# Keep in mind that, since we're working with binary, integers and power
+# of two values will be very important in this journey. Take a look at this:
+
+# 0000 (0)
+# 0001 (1)
+# 0010 (2)
+# 0011 (3)
+# 0100 (4)
+# 0101 (5)
+# 0110 (6)
+# 0111 (7)
+# 1000 (8)
+
+# Notice that we have 0-1-0-1 in the roghtmost column and 0-0-1-1 in the 
+# next. Then 0-0-0-0-1-1-1-1 and so on. Each 0-1 pattern goes "half speed" 
+# of the previous one. Anyway, use shifters to "accelerate" or "slow down" t.
+
+t<<1
+t<<2
+t<<3
+
+# Notes and rhythms are both frequencies. The difference between notes 
+# and time figures is just speed! From one octave to the other you have 
+# the same distance than from one time measure to the next.  
+# Exactly!!! powers of two.
+
+t>>2
+t>>3
+t>>4
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+# BITWISE LOGIC OPERATORS
+
+# Hear what happens when we combine these two registers with an operator.
+t<<2 & t>>6
+
+# Let's look closely.  & | ^ are bitwise operators. This means that they
+# compare two binary representations, bit by bit, and give you a result.
+
+# AND (&) returns 1 only if both bits are 1. OR (|) return 1 when any of
+# the bits is 1. XOR (^) returns 1 when only one of the bits is 1.
+
+#	  0101   	  0101       	  0101    (5)
+# 	& 0110   	^ 0110     	| 0110    (6)
+# 	= 0100 (4)	= 0011 (3)	= 0111 (7)   
+
+# VITAL INFORMATION: The table follows their PRECEDENCE ORDER.
+
+# These operators are totally crucial for bytebeating so try to understand
+# them deeply. The implications of these simple rules are amazing. In fact,
+# this is what's happening inside your computer at the lowest level.
+
+# Enough nerd chat. Check some actual implementations:
+
+# Combine with fixed values to get different wave shapes.
+t & 128
+t & 77
+t ^ 13
+t ^ 40
+t | 90
+t | 24
+
+# Combine with slow frequencies and you'll get shape and amplitude modulation
+t & t>>5
+t ^ t>>5
+t | t>>5
+
+# & will never return a value above the smaller operand, that's why it works
+# as a "crescendo" or an amplitude limiter. Bitwise operators have lower
+# precedence than shiftings (and any other operation) but & operator has the
+# highest among other bitwise operators.
+
+# ^ is more chaotic, it can return big or small results. It's good for
+# rare mixing and modulations but not for "envelope" effects.
+
+# | never gives a result below the smaller operand, it is good for mixing,
+# setting a minimum and that's why it gives this inmediat attack, the opossite
+# of & operator. Remember that | has the lowest precedence order.
+
+# One simple exercise to familiarize with this basic behaviour is to combine
+# different shifts and operators.
+t ^ t<<1 | t<<2 | t>>3 & t>>6
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# BASIC MATHEMATICAL OPERATORS
+
+# You can invert the ramp using - and, of course, experiment with basic 
+# mathematical operations like * / + too.
+
+t * 3
+t<<2 | t/5>>3 | t>>3
+t<<2 & t>>5 & -t>>4
+
+# You can use + to mix waves but you need to limit their amplitude before
+# like here with &127
+(t * 3 &127) + (t * 2 &127)
+
+# If you want to experiment with more chaotic mixings, use | and ^
+(t * 8) | (t * 6)
+(t * 8) ^ (t * 6)
+
+# Use t*t kind of formula to achive noise
+(t>>11&255) * (t & t>>4)
+(t>>4&255) * t
+(t&255) * (t>>3&255)
+
+# An interesting thing happens when you force the wave to wrap in reverse
+-(t & t>>2)
+-( t & t>>5 & t/3>>3 )
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# LOGIC SEQUENCERS
+
+# Ok, now we're getting a little more serious. What about sequences?
+# You can build the simplest counter using powers of two less one in an
+# & operation.
+
+# This sequence goes like this: t<<0, t<<1, t<<2, t<<3
+t << (t>>10 &3)
+
+# >>10 controls the speed and 3 sets the counting range, try different
+# values and also hear what happens when using not powers of two operators.
+
+t << (-t>>10 &3)
+t << (t>>8 &3)
+t << (t>>11 &5)
+t << (t &6)
+
+# Combine several operations if you don't want lineal countings, but remember
+# to limit the results with & and always keep in mind precedence order.
+
+t << (t>>10 &7 ^ t>>12 &7)
+t << ( (t>>10 ^ t>>12 ^ t>>11) &7)
+t << (t>>10&2 | t>>11&3)
+t << ( (-t>>12 | t>>10 ^ t>>11) &3)
+
+# Remember powers of two? You can spice up your boring loop with slices!
+
+-(t & t +1024 * 0                               >>5) | t>>2
+# 1024 is like a 1/8 measure
+
+-(t & t +1024 * (t>>10^t>>13^t>>11^t/1.5>>12)   >>5) | t>>2
+
+# Go for total sequence inception!!!
+
+t << t
+t << (t &3)
+t << (t>> 10 &3)
+t << (t>> (t>>10&15) &3)
+t << (t>> (t>>10&15) &3) | t>> 2
+t << (t>> (t>>10&15) &3) | t>> (t>> 11 &1|2)
+t << (t>> (t>>10&15) &3) | t>> (t>> (t>>12&3)+11 &1|2)
+t << (t>> (t>>10&15) &3) & -t>> 10 | t>> (t>> (t>>12&3)+11 &1|2)
+t << (t>> (t>>10&15) &3) & t>> (t>>11&12) | t>> (t>> (t>>12&3)+11 &1|2)
+
+# I think you got the idea... this can go on forever. With a little tweak
+# here and there it can get pretty decent:
+
+(-(t>>13&255) * (t>> (t>>7&7)>>(t>>12&2) << (t>> (-t>>12&15^t>>11&15) &3) & t>> (t>>11&12)) | t>> (t>> (t>>12&3)+11 &1|2) | (t*(t<<2&255)&127|t>>3&t*1.5>>5&127))&-t>>(t>>12&3^2)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# CONCEPTUAL REMARK
+ 
+# As you can notice in that last example, the classic notions of "voices",
+# "progressions", "instruments", etc. are kind of evanescent in bytebeat.
+# Of course you can always design more "classic" sounds and mix them, nothing
+# wrong with that:
+
+(t*(-t>>7&7)*(1>>(t>>10&3)&1)>>(t>>12&1)&64) + ((t*(1+.5*(t>>10&1))<<(t>>11&1)^t|t>>6|t/3>>5)&127) + ((t*(t<<2&127)&63|t>>(t>>10&3|1)|t>>4|t/1.5>>5)&63)
+
+# But maybe the full potential of this technique is, preciselly, its 
+# singularity, its unique synthesis approach. Bytebeat is a methamorphosis, 
+# different "voices", "progressions" or "instrument" may be just "moments" 
+# of the same expression and that's the most interesting and exciting thing 
+# for me. It is natural that you start emulating known structures to 
+# understand how it works but as you learn you'll probably feel more 
+# confortable playing with unique bytebeat possibilities:
+
+(-(t & t+1024 *(t>>12&t>>13^t>>11) >> (-t>>12&15^t>>11&15)) &128 ^ (t*(-t>>7&7) | t/0.333>>6) | t>>2 & t/2.5>>4) &200 | (t*(t<<(t&7)&255)&63|t>>4&63|t>>5&127)
+
+# Don't panic, that was mean but just wanted to show my point. 
+# We'll slow down now.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# SHIFTING SEQUENCERS
+
+# Can't say that logic sequencing isn't cool enough, right? But there's a
+# clever way for custom sequences too. Let's shift some bits.
+
+# First understand the simplest one: the binary sequencer.
+
+t * 1                  <<1 & -t>>2
+
+t * ( 105 >>(t>>10&7)&1 ) <<1 & -t>>2
+
+# Here, t is multiplied by 0 or 1 according to our sequence.
+# 105 decimal is 01101001 and that's what you hear. Change the number in
+# order to test a different pattern.
+
+# The formula is PATTERN>>(t>>SPEED&STEPS)&1
+
+# You can adjust the number of steps with &3 &7 &15 &31 etc, other values
+# are fine but you won't get a lineal shift. Of course, that too could be 
+# creatively exploited mixing logic and shifting sequencers.
+
+t * (105 >>(t>>10   & t>>13 &7) &1) <<1 | t>>4
+t * (105 >>(t>>10&7 ^ t>>13 &7) &1) <<1 | t>>4
+t * (105 >>(t>>10 & (t>>13  &7))&1) <<1 | t>>4
+
+# Boriiiiing. Time to build some pro sequencers.
+# To un-binarize your sequencer just rip out &1 or replace it.
+
+t * ( 105 >> (t>>10&7)    )
+t * ( 105 >> (t>>10&7) &15)
+
+t << (105 >>(t>>10&7)            &7) ^ t>>5
+t << (105 >>(t>>10&7 ^ t>>12&7)  &7) ^ t>>5
+
+t << (105 >> (t>>(117>>(t>>10&7)&15) &7)&7) ^ t>>5
+# Yes, inception again...
+
+# Ok, but this isn't so pro. Shifting one bit at a time just gives you
+# random increasing or decreasing results. We need to level up this stuff.
+
+t << (t>> 10                          &7) & t>>3
+t << (t>> (0xb1a7529>>(t>>12&7)*4&15) &7) & t>>(0x2453>>(t>>13&3)*4&15)
+
+# Woo now we're talking. What was that? Bitstep? Well, just inserted two
+# hex sequencers. To undertand it better we could talk about 12-TET:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 12-TET
+
+pow(2\\,23/12.0)*t
+# Think of that 23 as a MIDI note. Ok, that's totally wrong but let's
+# take it easy. Change the number and enjoy your well tempered bytebeat.
+
+pow(2\\, (123>>(t>>10&7)&31)  /12.0)*t <<1
+# Here you have melodic sequence, absolute crap. When you get really really
+# pro I guess you can find interesting scales like this.
+
+pow(2\\, (198>>(t>>10&7)&15)  /12.0)*t <<2
+# I told you... That sounds pretty modal to me, remember that number!
+
+# NOISE AMBIENT DRONE ALIEN EXCURSUS ALERT
+pow(2\\, (198>>(t>>3&7)&15)  /12.0)*t <<5 ^ t*0.99999
+pow(2\\, (198>>(t>>3&7)&31)  /12.0)*t *16.000001 ^ t
+pow(2\\, (198>>(t<<1&7)&15)  /12.0)*t *8.00001 ^ t
+pow(2\\, (198>>(t<<2&7)&15)  /12.0)*t *2 ^ t/1.3
+pow(2\\, (82>>(t<<(t>>2&1)&7)&15)  /12.0)*t <<3 ^ t>>8
+
+# just saying... Where were we? Ah, scales!
+
+# A minor arpeggio
+pow(2\\, (0x037c>>(t>>10&3)*4&15) /12.0)*t <<2
+# A minor chord
+pow(2\\, (0x037c>>(t&3)*4&15) /12.0)*t <<4
+# A minor progression
+pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<2
+# Rocking minor progression
+pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<(t>>3&3|1)
+
+# Let's analyze a little. In the number 0x037c, each digit represents a
+# distance in semitones from the fundamental t. Since its prefix 0x indicates
+# it is an hexadecimal value, each digit is represented by four bits: 
+# 1111 binary 
+# = 15 decimal 
+# = F hexadecimal
+# Thats why each counting possition (t>>10&3) is multiplied by 4 (*4). Finally,
+# the &15 restrincts the shifted value to the 0-15 range (one hex digit). See:
+
+# 0x 0    2    7    3    >> 4                  &15 =
+#    0000 0010 0111 0011 >> 4 = 0000 0010 0111 &15 = 0111 = 7
+
+
+(pow(2\\, ((0x0273>>(t>>10&3)*4&15)+(0x57>>(t>>14&3)*4&15)) /12.0)*t <<(t>>2&(t>>10&7^t>>12&7|3)) &127 |t>>7&t>>3) ^ ((t*(-t>>7&31)/(1<<(t>>12&1)+2))&-t>>3&128)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# SINE WAVES
+# TABLES
+#
+t*0
+0
+t*n[0x237cfe87>>(-t>>10&7)*4&15]<<2 
+
+(w[t+1024*(t>>10&15^t>>12&7)<<(r[t>>11&255]<0.5)+2&524287-(1<<(t>>13&7)+11)]*0.5+0.5)*128+(w[t<<3&524287]*0.5+0.5)*64
+
+
+t*n[(0x237c>>(t>>(t>>11&15)&3)*4&15)]<<(t>>10&7^t>>11&7&t>>12&3) & t>>5 &- t * ((t>>12&3)*0.5+0.5) >>3 
+
+
+# Your old friend Pitagoras
+#
+# So there was this crazy genius guy who did a lot of things like finding
+# math in physics and, when that didn't work, simply force it and kinda 
+# expulse of his spooky cult anyone who point that.
+#
+# Anyway... The thing is that you can build scales and chords dividing and
+# multiplying t by integers. Our dear powers of two will always give you
+# octaves but check this:
+
+# The first 5 harmonics make a major chord
+t*((t>>12&3)+2) <<1
+
+# And the first 5 subharmonics make a minor one!
+t/((-t>>12&3)+2) <<5
+
+# You can combine these two series and make interesting progressions.
+# After all, you don't need temperament.
+t*((t>>14&3)+1)/((-t>>11&3)+2)  <<3
+t*((t>>11&3)+1)/((-t>>12&3)+2)  <<2 &230 &- t >>3 ^ t>>5
+t*((t>>10&3)+2)/((-t>>13&3)+1)  <<(-t>>13&3) &160
+t*((t>>10&3)+1)/((-t>>12&3)+1)  << (t*1.5>>(t>>14&3)&7|3) 
+
+
+# I will explain the following (someday)
+(t * n[0x0357ce>>((t>>(t>>10&7)+6)\\%((t>>14&3)+4))*4&15] << (t>>11&2)+1  | t/3 >> 3 | t/5 >> 2 & t>>4) | (t<<5&-t>>2&-t>>3)
+
+t * (1+1/((t>>11&3)+1))  <<2 &128
+
+t * sin(t/100) <<3
+
+t/((t/3>>10&3)+2)  <<3 & t*((t/5>>10&3)+1) <<2  & (-t>>3 | t/1.5>>5) | (t*(t>>(t>>12&3)&((1<<(t>>14)\\%5+3)-1)))&64&-t+1024*(t>>13&3)>>4-(t>>12&1)
+
+
+t*n[192>>(t/1.01&3)&63|20] << (t*0.9&3) >> 2 ^ t*.002
+
+
+t*n[0x047b>>(t&3)*4&15]<<(t&3) >>1 ^ t*1.003*n[0x047b>>(t&3)*4&15]<<(t&3) >>1
+
+ | -t*1.001>>4
+
+
+t*n[(0x047b>>(t&3)*4&15)+(t>>16&1)*3] <<1 ^ t*0.999*n[(0x047b>>(t&3)*4&15)+(t>>16&1)*3] <<1
+
+
+t*n[(0x047b>>(t&3)*4&15)+1] <<(t>>11&7) ^ t*1.001*n[(0x047b>>(t&3)*4&15)+1] <<(t>>11&7) | t*1.01*n[1] ^ t*n[1] 
+
+
+t*n[(0x047b>>(t*1.5001&3)*4&15)+(t>>15&3)*5] <<3 ^ t*1.001<<2
+

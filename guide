@@ -1,0 +1,169 @@
+INSTRUCTIONS
+
+Load the script with the following command 
+:source vimscript.vim
+
+Read the comments and press CTRL-E in normal mode to evaluate a line.
+
+------------------------------------------------------------------------------
+
+BIT SHIFTING
+
+When you have a binary value like 0110, you can shift X bits to the left or 
+right to increase or decrease by powers of two like this:
+
+0110 (6) >> 1 = 0011 (3)
+0110 (6) << 1 = 1100 (12)
+
+That's exactly what you need to move among octaves and measures.
+Evaluate the following lines, change the numeric value and hear the difference.
+
+t   
+t << 4
+t >> 4
+
+------------------------------------------------------------------------------
+
+BITWISE OPERATORS
+
+Bitwise operators compare two values and give a result bit by bit. They can be 
+used to shape the waves, control the amplitudes, make sequences, etc.
+
+The AND operator returns 1 if both compared bits are 1: 
+0110 (6) & 1010 (10) = 0010 (2)
+Therefore, AND never returns a value above the lower operand. 
+
+t << 4 & 60
+
+t << 4 & 128
+
+t << 1 & t >> 4
+
+It works as an in-crescendo envelope.
+
+--------------------------------------
+
+OR operator returns 1 if any of the compared bits is 1:
+0110 (6) | 1010 (10) = 1110 (14)
+Therefore, it never returns a value below the higher operand.
+
+t << 4 | 60
+
+t << 1 | t >> 4
+
+t << 1 & -t >> 4
+
+It works as a percussive envelope, a smoother effect can be produced with
+negative t like above.
+
+--------------------------------------
+
+XOR returns 1 when one ¡and only one! of the compared bits is 1:
+0110 (6) ^ 1010 (10) = 1100 (12)
+Therefore, its output is a little more chaotic.
+
+t << 4 ^ 60
+
+t << 1 ^ t >> 4
+
+------------------------------------------------------------------------------
+
+COUNTERS AND OTHER LOGIC SEQUENCES
+
+Any bitwise operation will produce a pattern and these patterns will have a
+power of two lenght.  This is specially useful in the case of AND operator to
+build counters.
+
+t&1 = 0, 1
+t&3 = 0, 1, 2, 3
+t&7 = 0, 1, 2, 3, 4, 5, 6, 7
+t&15 = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+
+Check this octave arpeggio:
+
+t << (t >> 10 &3)
+
+Invert the direction of the counter:
+
+t << (-t >> 10 &3)
+
+You can combine many logical operations to change the sequence as long as you
+control the output range (see PRECEDENCE).
+
+t << (t>>10&3 ^ t>>11&3 | t>>12&3)
+
+Same as:
+
+t << ( (t>>10^t>>11|t>>12)&3 )
+
+--------------------------------------
+
+PRECEDENCE
+
+At this point, you need to understand the bitshif and bitwise precedence.
+Shifting (<< >>) follows */+- but, then, you have the operators in this order:
+
+& , ^ , |
+
+------------------------------------------------------------------------------   
+FLOATS
+
+Floats can be that spicy ingredient that make your beat special with so little.
+
+Long or pseudo-random sequences:
+t << ( (t>>10)*1.41 &3 ) 
+
+Polyrhythms and polymeters:
+t<<4 & -t*1.5 >>4 | t<<2 & -t>>4
+t<<5 & -t*1.1>>5 &64 | t<<1 & -t>>4 & 128
+
+Harmonic modulations
+t<<2 ^ t*1.001<<2
+t<<4 | t*1.013<<3
+(t&t*1.02)<<4&128
+
+------------------------------------------------------------------------------
+
+HEX AND BINARY SEQUENCERS
+
+In this world, numbers are already sequences. They're sequences of digits.
+So what? You can make a sequence of any number only by shifting it.
+
+t * 8 * (21 >> (t>>10&7) &1)
+
+00010101 & 1 = 1
+00001010 & 1 = 0
+00000101 & 1 = 1
+etc.
+ 
+One hex digit equals four bits. See if you can get how this melody works: 
+t * (0x9cf9ce >> (t>>10&7)*4 &15)
+
+You need to move by four bits (*4) but, then, do an AND operation (&15) to
+get the last four bits of the number:
+
+01111101 (125) & 15 = 1101 (13)
+
+------------------------------------------------------------------------------
+
+TET
+
+You can play twelve equal temperament notes with this formula:
+t*pow(2\\, NOTE/12.0)
+
+t * pow(2\\, 48/12.0)
+
+t * pow(2\\, (0x027a>>(t>>10&3)*4&15)  /12.0) << 2
+
+t * pow(2\\, (0x027a>>((t>>10)*1.7&3)*4&15)  /12.0) << 2
+
+
+OK, that's all for now.  I hope it would be helpful, don't hesitate to send
+me any question or comment to gabriel.vinazza@gmail.com
+
+Now a little tune to say goodbye:
+
+t * ((t>>10)*1.3&1) * pow(2\\, (0x027a>>((t>>10)*1.7&3)*4&15)  /12.0) << (t>>11&3) &128 | t>>3-(t>>12&1)<<(-t>>7)
+
+You have the melody and the percussion mixed by an OR operator.
+
