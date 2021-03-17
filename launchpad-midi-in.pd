@@ -1,9 +1,0 @@
-#N canvas 125 194 450 300 10;
-#X obj 87 54 notein;
-#X obj 87 123 text;
-#X obj 87 77 stripnote;
-#X msg 87 101 clear \, set \$1 \, write midinote;
-#X connect 0 0 2 0;
-#X connect 0 1 2 1;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
