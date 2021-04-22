@@ -1,0 +1,228 @@
+## SETUP
+-- Open the patch.pd file with Pure Data and run the vim script before continue
+-- Press c-e to evaluate a line, c-a will stop the sound.
+
+## BYTEBEAT SPIRIT
+-- Bytebeat is an unique synthesis technique that takes advantage of the most
+-- elementary bit manipulation instructions. That means that the same ops
+-- can function as sequencers, envelopes, modulators, mixers, pitch control, 
+-- measures, etc.  So, ideally, you need to understand those operations in 
+-- order to get the best out of bytebeat.  
+
+-- There are still many many ways of doing things and also many many things to 
+-- explore and discover but here you'll read about some important findings.
+
+## THE TECHNICAL PART
+-- All operations will take 't' as the only variable.  't' means 'time' and
+-- it's just a counter that increases +8192 (=1<<13) per second by default.
+-- But keep in mind that the output of any bytebeat expression is truncated
+-- to fit the 0-255 amplitude spectrum, that is, 8-bit depth.  In fact, 8 bits
+-- are equivalent to 1 byte and that's why the name BYTEbeat.
+
+-- So, if you put just 't' in your expression, that will loop a 0 to 255 
+-- ascendent sawtooth wave (8192/256 = 32 Hz, something between B1 and C1,
+-- C1 minus 38 cents to be precise).  That will be our raw material.
+
+# POSTFIX NOTATION AND OPERATORS
+-- For the sake of elegance and to avoid unnumerable parentheses we'll
+-- use RPN/postfix notation.  That operands will be accumulated in the stack
+-- and pop when an operator appear.
+
+-- Examples:
+-- t>>1 	 : t 1 l
+-- t*((t>>10)%5) : t t 10 r 5 M m
+
+-- Operators:
+-- l (<<) r (>>) 
+-- a (&) o (|) x (^) 
+-- + - d (/) m (*) 
+-- M (%)
+-- L (<) G (>) E (==) N (!=) 
+-- p (pow) i (int) s (sine) n (note)
+
+## INTRODUCTION: SHIFTERS
+-- Did you notice that '8192 = 1<<13'?
+-- '<<' and '>>' are bitshifters.  They shift bits to the left or right.
+-- For example: 0100 (4) << 1 = 1000 (8), and 0100 (4) >> 2 = 0001 (1).
+-- It is very similar but not quite the same than dividing and multiplying by
+-- powers of two.  Let's change a little the last example to understand:
+-- 0101 (5) >> 2 = 0001 (1). See? That last bit is 'lost' when shifting.
+
+-- Anyway, it works and its less expensive than multiplying or dividing.  Of
+-- course, you'll always get an integer result.  Shifting will be the easiest
+-- way to increase or decrease 't' and change octaves or time measures.
+
+## BRING THE BASE!
+
+t 1 l
+-- same as t<<1
+-- Change the 1 to shift the octave
+
+t 3 r
+-- same as t>>3
+-- This sawtooth is very slow, so we perceive it as a rhythmic thing.
+-- Full circle: since 't' is a freq, can be pitch and/or time fundamental.
+
+-- "Can I shift 't' places?"  Indeed, that would be interesting...
+1234 t l
+1234 t r
+-- Picked a random value to modulate
+
+t t l
+t t r
+-- Simplest modulation ever 
+
+t 9 r t l
+t t 9 r l
+-- Little variations
+
+## LOGICAL BITWISE OPERATORS : AND
+-- Then, we have the basic bitwise operators. AND (&), OR (|) and XOR (^).
+-- They compare two values bit by bit.
+
+-- AND operator returns 1 where two bits are 1 (1010 & 0011 = 0010)
+-- Hence, the result will always be below the lesser operand.
+
+-- Limiter/Shaper
+t 127 a
+t 128 a
+-- same as 't&127' and 't&128'
+-- Powers of two will produce square waves.
+-- Powers of two minus one (1, 3, 7, 15, 31, 63, 127, etc.) a ramp and
+-- that will be very helpful for building counters/sequencers!
+
+-- 'Envelope'
+t 2 l t 5 r a
+
+t 2 l -t 5 r a
+-- same as 't<<2 & -t>>5'
+-- Inverting 't' is also a very helpful technique
+
+-- Trigger/Rhythm
+t 2 l -t 4 r a -t 6 r a
+t 2 l -t 4 r a -t 3 r a
+
+t 2 l t 7 d 1 r a t 11 d 1 r a
+-- same as 't<<2 & t/7>>1 & t/11>>1', a rare polyrhythm
+
+-- Modulator
+t 3 l t 1 l a 
+t 2 l 1.01 m t 1 l a
+
+t 4 l t 3 l 1.005 m a
+-- same as 't<<4 & t*1.005<<3'
+-- Not every bytebeat system will allow float point but that's a good one
+
+t t 3 a l
+t t 0.968 m 7 a l
+-- same as 't<<(t&3)' and 't<<(t*.968&7)' which you can say they're already
+-- sequencers.  Just changing the octave very fast, like we did before.
+
+-- Sequencers
+t t 10 r 3 a l
+
+t -t 10 r 3 a l
+-- same as 't << (-t>>10&3)'
+-- Now we're sequencing octaves but slowly, 't>>10' is kind of a 1/16 measure.
+
+t t 10 r 42 a m
+t -t 10 r 42 a m
+-- same as 't * (-t>>10&42)'
+-- The 42 is already a bytebeat classic!
+
+t t 9 r 42 a 5 M m
+-- same as 't * ((t>>9&42)%5)'
+-- There are many ways of spice up your sequences
+
+## 12-TET SCALE SEQUENCES
+-- Here you have a melodic sequencer:
+942 t 11 r 3 a 4 m r 15 a n 2 l
+-- same as 'pow(2, (942 >> (t>>11&3)*4 &15))/12.0) *t <<2'
+
+-- Don't panic!
+-- 'n' is a short for 'pow(2,X/12.0)*t', a 12-TET scale.
+-- &3 is the lenght of the sequence
+-- *4&15 moves by 4 bits to get the next hex digit
+-- 942 equals to 03AE hex, each hex digit mean X semitones from the fundamental
+ 
+-- Another little tweak:
+942 t 11 r 1.37 m 3 a 4 m r 15 a n 2 l
+-- Same four notes but that 1.37 is now changing the sequence order
+-- '(t>>11) *1.37 &3'
+
+## LOGICAL BITWISE OPERATORS: OR, XOR
+-- OR returns 1 if ANY of the compared bits is 1 (1010 | 0011 = 1011)
+-- The result will always be above the lesser operand.
+-- It is similar but not quite the same as adding and therefore it can be
+-- used to "mix voices", controll the amplitude and more, like &.
+
+t 1 l t 7 r o
+t 1 l t 3 r o
+t 1 l t 6 m o
+t 2.001 m t 1 l o
+t t 10 r t 12 r o 3 a l
+30 n 46 n o
+
+-- XOR returns 1 when ONLY ONE of the compared bits is 1 (1010 ^ 0011 = 1001)
+-- The results can be above or bellow the lesser operand, it can be used
+-- to produce a dirtier "mix", modulations and complexer sequences.
+
+t 1 l t 3 r x
+t 1 l t 7 r x
+t 1.01 m t x
+t 3 l t 10 r t 12 r x 3 a d
+30 n 43 n x
+
+## MORE RELATED STUFF
+
+-- If you're a pythagorean orthodox, don't use "n"
+
+t 3 m
+t 3 d 3 l
+-t 10 r 3 a 1 + t m t 11 r 5 M 1 + d 3 l
+
+-- Divide or multiply t by itself to generate 'whiter' noises
+
+t t 255 a m
+t t 255 a d
+t t 4 r 255 a m
+t t 1 12 l M m
+t t 1 12 l M d
+
+-- That last one sounds like a kick, these could be useful:
+
+t -t 8 r 7 a l 3 r 
+t -t 8 r 7 a m 
+1024 t 2047 a d 128 m
+1024 t 2047 a d s 256 m
+
+-- OR and XOR as 'mixers'
+-t 10 r 3 a 1 + t m t 11 r 5 M 1 + d 3 l 127 a t 4 r -t 9 r 7 a l o
+-t 10 r 3 a 1 + t m t 11 r 5 M 1 + d 3 l 127 a t 4 r -t 9 r 7 a l x
+-t 10 r 3 a 1 + t m t 11 r 5 M 1 + d 2 l t 6 r a 127 a t 5 r -t 9 r 7 a l o 
+-t 10 r 3 a 1 + t m t 11 r 5 M 1 + d 2 l -t 3 r a 127 a t 6 r -t 9 r 7 a l x
+
+-- If you miss 'resolution' try classic FM
+t 32 d t 32 d s 1024 t 1 r 1023 a d m + s 127 m 127 +
+
+-- Yes, don't forget the sine function
+
+t t 120 d s 4 m + 4 l
+-- same as 't + sin(t/120)*4 <<4'
+
+-- More random stuff
+t 5 r t x 18.3 m 
+t 5 r t a 199 m
+t 3 r t o 201 m
+
+-- The wrapping glitch was exploited since the begining
+t 4 r t a 1 -
+t 6 r t 1 r t x a 9 -
+t 3 r t a t 13 r 7 a -
+
+-- More float point easy modulations
+t 5 l t 8.005 d 6 M d
+
+-- Euclidean-like glitchy groove for goodbye
+t 10 r 31 a 3 M 0 E t 3 l t 255 M x m t 10 r 15 a 5 M 4 E t t 7 a l m o 127 a t 4 r 255 a 16 L t 6 l m o t 1 l -t 3 d 3 r a 128 a o t 10 r 13 M - t 6 M +
+

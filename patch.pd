@@ -1,0 +1,71 @@
+#N canvas 769 261 325 162 12;
+#N canvas 0 96 745 432 rampatch 0;
+#X obj 25 204 phasor~;
+#X obj 25 179 expr $f1/64.0;
+#X msg 25 42 1;
+#X obj 25 269 s~ in;
+#X obj 25 310 r~ out;
+#X obj 25 360 clip~ -1 1;
+#X obj 25 335 expr~ ($v1&255)/128-1;
+#X obj 25 385 dac~;
+#N canvas 0 545 450 300 meta-patch 0;
+#X obj 0 0 r~ in;
+#X obj 0 20 expr~ $v1;
+#X obj 0 99 s~ meta;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 441 293 pd meta-patch;
+#N canvas 0 96 450 300 expr-patch 0;
+#X obj 0 0 r~ meta;
+#X obj 0 20 expr~ 0;
+#X obj 0 99 s~ out;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 259 132 pd expr-patch;
+#X msg 546 293 \; pd-meta-patch clear \, obj 0 0 r~ in \, obj 0 20
+expr~ \$1 \, obj 0 99 s~ meta \, connect 0 0 1 0 \, connect 1 0 2 0
+\;, f 20;
+#X obj 25 229 expr~ $v1*(1<<19);
+#X obj 25 2 loadbang;
+#X msg 62 27 \; pd dsp 1;
+#X msg 364 132 \; pd-expr-patch clear \, obj 0 0 r~ meta \, obj 0 20
+expr~ \$1 \, obj 0 99 s~ out \, connect 0 0 1 0 \, connect 1 0 2 0
+\;, f 20;
+#X obj 546 268 symbol;
+#X obj 70 95 netreceive 3032;
+#X obj 364 104 symbol;
+#X obj 546 244 netreceive 3031;
+#X obj 364 79 netreceive 3030;
+#X connect 0 0 11 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 5 0 7 1;
+#X connect 6 0 5 0;
+#X connect 11 0 3 0;
+#X connect 12 0 2 0;
+#X connect 12 0 13 0;
+#X connect 15 0 10 0;
+#X connect 16 0 1 0;
+#X connect 17 0 14 0;
+#X connect 18 0 15 0;
+#X connect 19 0 17 0;
+#X restore 12 19 pd rampatch;
+#X obj 11 90 text define -k readme;
+#A set Hi \, this patch receives msgs send via pdsend in ports 3030
+3031 and 3032 \; \; It dynamically creates expr~ objs with the bytebeat
+expressions sent \; You can check the 'scripts' on the msg objs inside
+the rampatch sub \; \; A counter loop is created with phasor~ and the
+signal passes two instances \; 1- meta-patch sub: An optional bytebeat
+'pre-FX' expression (port 3031) \; 2- expr-patch sub: The actual bytebeat
+expression (port 3030) \; \; The 'tempo' or speed of the ramp can be
+changed sending a msg to port 3032 in Hz \; The default speed is 1Hz
+\, it loops after 64 cycles ($f1/64.0) \; and increases +8192 (1<<13)
+per cycle \; \; Use (a) ptoi.sh from the cl to send postfix expressions
+\; $./ptoi.sh t t 8 r a | pdsend 3030 \; \; (b) From Vim with <c-e>
+\, running the vim script (script.vim) \; \; Or (c) with live.sh script
+\; \; Please check readme.md and tutorial.rampcode for more documentation.
+\; mail: gabriel.vinazza@gmail.com ig: @gabovinazza;
+#X text 10 50 Welcome to the Rampcode PD patch!;
+#X text 10 68 Click the text obj for documentation...;
