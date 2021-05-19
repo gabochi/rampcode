@@ -11,14 +11,16 @@ EXBIT=0
 EXPAR=0
 
 updateME(){
-	[ $MEBIT -gt 0 ] && ME=$(eval sed '$((MEBIT))!d' ${FILE}.0 | sed "s/p0/${MEPAR}/") || ME="t 0 m"
-	[[ $(echo $ME | grep v1) == "" ]] && ME=$(./ptoi.sh $ME)
+	[ $MEBIT -gt 0 ] && ME=$(eval sed '$((MEBIT))!d' ${FILE}.0 | sed "s/X/${MEPAR}/") || ME="t0m"
+	echo $ME
+	[[ $(echo $ME | grep v1) == "" ]] && ME=$(./obo.sh $ME)
 	echo "$ME" | pdsend 3031
 }
 
 updateEX(){
-	[ $EXBIT -gt 0 ] && EX=$(eval sed '$((EXBIT))!d' ${FILE}.3 | sed "s/p0/${EXPAR}/") || EX="t 0 m"
-	[[ $(echo $EX | grep v1) == "" ]] && EX=$(./ptoi.sh $EX)
+	[ $EXBIT -gt 0 ] && EX=$(eval sed '$((EXBIT))!d' ${FILE}.3 | sed "s/X/${EXPAR}/") || EX="t0m"
+	echo $EX
+	[[ $(echo $EX | grep v1) == "" ]] && EX=$(./obo.sh $EX)
 	echo "$EX" | pdsend 3030
 }
 
@@ -29,7 +31,7 @@ do
 	printf '%04d ' "$(echo "obase=2; $MEPAR" | bc)" 
 	printf '%08d ' "$(echo "obase=2; $EXBIT" | bc)" 
 	printf '%04d ' "$(echo "obase=2; $EXPAR" | bc)" 
-	echo " ($MEBIT) : $ME -> ($EXBIT) : $EX "
+	echo "($MEBIT) : ($EXBIT)"
 	
 	
 

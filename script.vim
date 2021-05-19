@@ -1,8 +1,8 @@
-set syn=haskell
+"set syn=haskell
 set mouse=a
 
 function Dale()
-	silent exe '!./ptoi.sh ' . getline('.') . '| pdsend 3030' | redraw!
+	silent exe '!./obo.sh ' . getline('.') . '| pdsend 3030' | redraw!
 	endfunction
 
 function Quiet()

@@ -1,4 +1,4 @@
-#N canvas 769 261 325 162 12;
+#N canvas 769 291 325 162 12;
 #N canvas 0 96 745 432 rampatch 0;
 #X obj 25 204 phasor~;
 #X obj 25 179 expr $f1/64.0;
@@ -62,10 +62,11 @@ signal passes two instances \; 1- meta-patch sub: An optional bytebeat
 expression (port 3030) \; \; The 'tempo' or speed of the ramp can be
 changed sending a msg to port 3032 in Hz \; The default speed is 1Hz
 \, it loops after 64 cycles ($f1/64.0) \; and increases +8192 (1<<13)
-per cycle \; \; Use (a) ptoi.sh from the cl to send postfix expressions
-\; $./ptoi.sh t t 8 r a | pdsend 3030 \; \; (b) From Vim with <c-e>
-\, running the vim script (script.vim) \; \; Or (c) with live.sh script
-\; \; Please check readme.md and tutorial.rampcode for more documentation.
-\; mail: gabriel.vinazza@gmail.com ig: @gabovinazza;
+per cycle (0-524288) \; \; Use (a) ptoi.sh from the cl to send postfix
+expressions \; $./ptoi.sh t t 8 r a | pdsend 3030 \; \; (b) From Vim
+with <c-e> \, running the vim script (script.vim) \; \; Or (c) with
+live.sh script \; \; Please check readme.md and tutorial.rampcode for
+more documentation. \; mail: gabriel.vinazza@gmail.com ig: @gabovinazza
+;
 #X text 10 50 Welcome to the Rampcode PD patch!;
 #X text 10 68 Click the text obj for documentation...;
