@@ -1,0 +1,132 @@
+
+# RAMPCODE
+# ========
+# live-coding system for bytebeat
+
+# MACROS
+# ------
+
+# Use <F2> to evaluate the current line and <F5> to stop the sound.
+# <F3> random effects and <F4> return to normal.
+# You can edit a msg with <F6> to change the speed.
+
+# test 
+t1lt10rt12x31aa tt0.203mx + t10r1.234m3M t3d10r2a+ l t13r3Mr t1.75d13r3Ml 128t13r1a100m+a t2rt5rao 
+
+# BASIC BITWISE OPERATORS
+# -----------------------
+
+# Rampcode uses 't' like any other bytebeat system and postfix (RPN) notation:
+# 't10r' postfix is the same as the infix 't>>10' 
+
+ t
+# 't' means 'time' so, speeding up or slowing down will affect both, pitch and rhythm
+
+ t4m
+ t4d
+# Multiply to speed it up, divide to slow it down.
+
+ t2l
+ t3l
+ t2r
+ t3r
+# Use bit shifting to multiply or divide by powers of two.
+# This is very useful since octaves and rhythmic figures are related like that.
+
+ ttl
+ ttr
+# Don't be afraid of experimenting with things. If you can write it, you can hear it.
+
+ t2l 128a
+ t2l 127a
+ t2l 190a
+# AND operator NEVER returns a value ABOVE the SMALLEST OPERAND.
+
+ t8r t1l a
+ t3r t1l a
+ 0t-3r t1la
+# Therefore, its good for shaping waves and controlling the amplitude.
+
+ t3r t1l o
+ t1.01m t o
+# OR operator ALWAYS returns a value GREATER OR EQUAL to the SMALLEST OPERAND. 
+# Shape waves and control the amplitude, also good for lofi mixing.
+
+ t3r t1l x
+ t1.01m t x
+# XOR is not so previsible, cool for another lofi mixing and distorted modulations.
+
+ 24n
+# 'n' just mean 'note'
+# The 12-TET scale is not absolute but relative to the speed of t.
+
+
+# SOME OLD AND NEW TRICKS
+# =======================
+# Bytebeat is all about playing and mastering little tricks. Here you have some:
+
+
+# MELODIC SEQUENCERS
+# ------------------
+
+ t10r 42a tm 
+# Maybe you already knew this classig bytebeat but, did you realize its a small sequencer?
+# t10r changes every '1/8' measure, '42a' gives the sequence of values to multiply in 'tm'
+
+ t10r 7a tm
+# Let's change '42' for a power of two less one, now you get it?
+
+ t   10r        7a7x tm
+ 0t- 10r        7a tm
+ t   10r t12r o 7a tm
+ t   10r 3.45 m 7a tm
+# There are many ways of inverting or altering the sequence 
+
+# BUILDING UP A COMPLEX AND POLYRHYTHMIC ARPEGGIATOR
+# --------------------------------------------------
+
+ t t10r 3a l
+# Let's build it up from here, an octave arpeggiator
+
+ t t10rt12rx 3a l
+# Added 't12r' and XOR with previous 't10r' to make the sequence more interesting
+
+ t t10r1.234m3a l
+# Wait, this is easier! Just multiply by a random float and '3a' will keep it in range.
+
+ t t10r1.234m3M l
+# What about modulo (%) instead of AND?
+
+ tt1.001mo t10r1.234m3M l 
+# A phasor effect adding a detuned 't1.001m'
+
+ tt1.001mx t10r1.234m3M l 128a t2ro 
+# OR envelope for instant attack and '128a' square wave
+
+ tt1.001mo t10r1.234m3M l 128a t2rt5rao 
+# Spice up the groove: "arpeggio | t>>2 & t>>5"
+
+ tt1.001mo t10r1.234m3M l t3d2r t4r a o
+# Straightforward polyrhythm: "arpeggio | t/3>>2 & t>>3"
+
+# BASH HEXADECIMAL MELODIES & DRONES
+# ----------------------------------
+# Tired of pythagorean intervals and octaves? Time for some real scale hacking...
+
+ $((16\#047b)) t10r3a2lr15a n 2l 127a
+# Hexadecimal sequencer, wrote the Maj7 arpeggio in bash. 
+
+ $((16\#047b)) t4r3a3lr15an 3l t5.0001m127ao 
+# Something more dronic/ambient, same arpeggio but added some detune and it goes very fast.
+
+# DIGITAL HARDCORE
+# ----------------
+# Heavy shit happens when you mess with the wrapping and the amplitude goes wild...
+
+ t3rta 1-
+ tt7r108a+ 3rta 1-
+ t2rta t10r 42a-
+ tt8r108a+ t11r47m3Mrta t13r3.65m31a- t t10rt11rot12rx31aM x
+
+
+
