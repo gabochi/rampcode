@@ -70,7 +70,7 @@ t1lt10rt12x31aa tt0.203mx + t10r1.234m3M t3d10r2a+ l t13r3Mr t1.75d13r3Ml 128t13
 # ------------------
 
  t10r 42a tm 
-# Maybe you already knew this classig bytebeat but, did you realize its a small sequencer?
+# Maybe you already knew this classic bytebeat but, did you realize its a small sequencer?
 # t10r changes every '1/8' measure, '42a' gives the sequence of values to multiply in 'tm'
 
  t10r 7a tm

@@ -30,5 +30,7 @@ Bytebeat is a discovery made by **Viznut**, check [his page](http://viznut.fi/en
 ## Contact:
 
 [Visit my page](https://gabochi.github.io)
+
 Mail me : gabriel.vinazza@gmail.com
+
 [Check my Instagram](https://instagram.com/gabovinazza)
