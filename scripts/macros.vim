@@ -2,7 +2,7 @@
 
 "eval current line
 function Dale()
-	silent exe '!scripts/parse.sh ' . getline('.') . '| pdsend 3030' | redraw!
+	silent exe '!. scripts/func.sh && scripts/parse.sh ' . getline('.') . '| pdsend 3030' | redraw!
 	endfunction
 
 "random FX

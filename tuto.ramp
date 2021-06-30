@@ -116,7 +116,7 @@ t1lt10rt12x31aa tt0.203mx + t10r1.234m3M t3d10r2a+ l t13r3Mr t1.75d13r3Ml 128t13
  $((16\#047b)) t10r3a2lr15a n 2l 127a
 # Hexadecimal sequencer, wrote the Maj7 arpeggio in bash. 
 
- $((16\#047b)) t4r3a3lr15an 3l t5.0001m127ao 
+ $((16\#047b)) t4r3a2lr15an 3l t5.0001m127ao 
 # Something more dronic/ambient, same arpeggio but added some detune and it goes very fast.
 
 # DIGITAL HARDCORE
@@ -129,4 +129,13 @@ t1lt10rt12x31aa tt0.203mx + t10r1.234m3M t3d10r2a+ l t13r3Mr t1.75d13r3Ml 128t13
  tt8r108a+ t11r47m3Mrta t13r3.65m31a- t t10rt11rot12rx31aM x
 
 
+# FUNCTIONS (beta)
+# ================
+# As we've seen, you can insert bash scripts into the rampcode.
 
+
+# This is just a test function 
+$(scale $((16\#37c732)) t9rt13rt11rao) 3l
+
+# jon, dor, fri, lid, mix, aeo, arm, art so far
+$(scale $jon t10rt8ra2.75m) t10r3.23m7M 1ol 128a t1024 3m+6rt2rao
