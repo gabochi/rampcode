@@ -3,8 +3,8 @@
 # ========
 # live-coding system for bytebeat
 
-# MACROS
-# ------
+# KEYS
+# ----
 
 # Use <F2> to evaluate the current line and <F5> to stop the sound.
 # <F3> random effects and <F4> return to normal.
@@ -134,8 +134,29 @@ t1lt10rt12x31aa tt0.203mx + t10r1.234m3M t3d10r2a+ l t13r3Mr t1.75d13r3Ml 128t13
 # As we've seen, you can insert bash scripts into the rampcode.
 
 
+$(sca $jon t10r3M2m t15r3a+) 3l $(euc 10 9)
+
+
 # This is just a test function 
-$(scale $((16\#37c732)) t9rt13rt11rao) 3l
+$(sca $((16\#37c732)) t10r) 3l
+$(sca $((16\#37c732)) t9rt13rt11rao) 3l
 
 # jon, dor, fri, lid, mix, aeo, arm, art so far
-$(scale $jon t10rt8ra2.75m) t10r3.23m7M 1ol 128a t1024 3m+6rt2rao
+
+$(sca $dor t10r) 3l
+$(sca $dor t10r7x) 3l
+
+$(sca $aeo t8r3M2m t15r7a+) 5l
+$(sca $((16\#37c1507)) t10r4M t13r7a+) t10r1a1+l 130a tt8r3a3xl t4r255xa o
+
+$(sca $lid t10r1.8m) 3l
+$(sca $jon t10r6m) 3l
+
+$(sca $jon t10rt8ra2.75m) t10r3.23m7M 1ol 128a t1024 3m+6rt2rao
+
+
+$(dup $(sca $jon t10r) 1l) 9+ x
+
+$(dup $(sca $jon t10r) 1l) .5001m 255a m 
+
+$(dup $(sca $jon t10r3M2m t13r3a+) 2l) .5001m 255a m 128a t t10r3.7m3a r255xa

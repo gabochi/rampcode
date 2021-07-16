@@ -9,7 +9,11 @@ agregar(){
 
 operar(){
 	case ${1} in
+
 		n ) operacion="t*p(2\,${pila[$p]}/12.0)" ;;
+		I ) operacion="I(${pila[$(( p - 2 ))]}\,${pila[$(( p - 1 ))]}\,${pila[$p]})" 
+			(( p = p - 2 ))
+			;;
 		p ) operacion="p(${pila[$(( p - 1 ))]}\,${pila[$p]})" 
 			(( p-- ))
 			;;
@@ -18,7 +22,6 @@ operar(){
 		* ) operacion="(${pila[$(( p - 1 ))]}${1}${pila[$p]})" 
 			(( p-- )) 
 			;;
-
 	esac
 	
 	pila[${p}]="${operacion}"

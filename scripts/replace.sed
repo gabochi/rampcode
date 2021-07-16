@@ -15,7 +15,7 @@ s/p/pow/g
 s/i/int/g
 s/s/sin/g
 
-#s/:/\\,/g
+s/I/if/g
 s/G/>/g
 s/L/</g
 s/E/==/g
