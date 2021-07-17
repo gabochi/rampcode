@@ -25,16 +25,28 @@ dup(){
 	echo -e "$@ $@"
 }
 
+bin(){
+	echo -e "$((2#$1)) $2 15ar1am"
+}
+
+hex(){
+	echo -e "$((16#$1))"
+}
+
+seq(){
+	echo -e "$@ 7a2lr15a"
+}
+
 sca(){
 	echo -e "$@ 7a2lr15an"
 }
 
 euc(){
-    echo -e "t ${1} r15a ${2} m16M ${2} Lm"
+    echo -e "$1 15a $2 m16M $2 Lm"
 }
 
-peu(){
-    echo -e "t ${1} r32a ${3} + ${2} M0Em"
+mod(){
+    echo -e "$1 31a $2 M0Em"
 }
 
 #imout(){
