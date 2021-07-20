@@ -19,6 +19,7 @@ operar(){
 			;;
 		s ) operacion="s(${pila[$p]})" ;;
 		i ) operacion="i(${pila[$p]})" ;;
+		b ) operacion="b(${pila[$p]})" ;;
 		* ) operacion="(${pila[$(( p - 1 ))]}${1}${pila[$p]})" 
 			(( p-- )) 
 			;;

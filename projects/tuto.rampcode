@@ -35,12 +35,13 @@
 						t t10r3a l 
 						t t10r3a3x l
 						t t9r3a3x l
-						t t8r3a3x l t4ra
-						t t8r3a3x l t4ro
+						t t8r3a3x l t4ra 
+						t t8r3a3x l t4ro 
 # + - m d	arithmetics			
-						tt +
-						tt -
+						t1 1+ l
+						tt3ra 1-
 						t 3m
+						t8rta t10rm
 						t 3d
 						t3m t7d o
 						t9r42a tm
@@ -48,6 +49,8 @@
 						t t255M x
 						t t131M x
 						t t10r7a5M l
+						t t8.001d5Md 5l
+						t1l t7r255M127-b a
 # E L G N	equal lesser greater not	
 						tt8r3a3xl t10r3a 0E m
 # I		if then else			
@@ -57,9 +60,14 @@
 						t9r63a63x n
 						t10r2.5m15M n 2l
 # i		integer				
+# b		abs
 # p		power
 # s		sine (-1 1)			
-						36n t140ds 20m+	
+						36n t140ds 20m+
+						t10rs 64m64+ in
+						t10rs 128mb n
+						t2l t t11rs3m3+ ro
+						t2l t t11rs6mbro
 
 # SHELL FUNCTIONS (EXPERIMENTAL)
 # ------------------------------
@@ -76,9 +84,15 @@
 # hex		hexadecimal value		
 						t $(hex c) n
 # seq		hexadecimal sequencer (1 arg)		
-						t $(seq $(hex 047c) t10r3a) n 2l	
+						t $(seq $(hex 047c) t10r3a) n 2l
+						t $(seq $(hex 047c) t10r3a) t14r1a+ n 3l
+						t $(seq $(hex 047c) t15r1a $(hex 100) m- t10r3a) n 3l
+
+
 # sca		play a sequence of notes (1 arg)	
 						$(sca ${jon}t10r) 2l
+						$(sca $jon t10rs 8mb) 2l
+						$(sca $jon t10rs 4m4+) 2l
 #
 # 						SCALES
 # 						------
