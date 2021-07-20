@@ -8,10 +8,16 @@
  $((16\#0378)) t11r3a2lr15an t3r3al 2l t4.001mx 127a
  $((16\#0378)) t11r3a2lr15an t3r3al 1l t4rta4- a
 
- $((16\#0378)) t13rt12rxt10ra 3a2lr15an t10r3al t13r1a1+l t1.001mo $(euc 1024+10 11) 147a 
- $((16\#0378)) t13rt12rxt10ra 3a2lr15an t11r3al t13r1a1+l t4.01mo 147a $(euc 1024+10 11) t t8r3a3xl $(euc 10 4) x
+ $((16\#0378)) t13rt12rxt10ra 3a2lr15an t10r3al t13r2a1+l t1.001mo $(euc t10r1+ 11) 147a 
+ $((16\#0378)) t13rt12rxt10ra 3a2lr15an t11r3al t13r1a1+l t2.001mo 147a $(euc t10r1+ 11) t t8r3a3xl $(euc t10r 4) x
+ $((16\#0378)) t13rt12rxt10ra 3a2lr15an t11r3al t13r2al t6.001ma $(euc t10r1+ 11) t t8r3a3xl $(euc t10r 4) o t6l64at3ro x
 
-$((16\#0378)) t13rt12rxt10ra 3a2lr15an t12r3al t13r1a1+l t.5001mx 140a t11r15a5M2Lm t t8r3a3xl 1r $(euc 11 8) o
+ $((16\#0378)) t13rt12rxt10ra 3a2lr15an t12r3al t13r1a1+l t.5001mx 140a t11r15a5M2Lm t t8r3a3xl 1r $(euc t11r 8) o
+
+1$(euc t10r1+ 11) $((16\#0378)) t11r3a2lr15an t $(seq $(hex b68a37) t11r6M) r3a3xl t10r3al 147a $((16\#0378)) t11r3a2lr15an t4rta4- a I 
+1$(euc t10r1+ 11)0E $((16\#0378)) t11r3a2lr15an t $(seq $(hex b68a37) t11r6M) r3a3xl t10r3al 64o $((16\#0378)) t11r3a2lr15an t4rta4- a I 
+
+
 
 # $((16\#0378)) t13r3a2lr15an t1r3al 2l t4.001mx t4rta9-a
 # $((16\#037b)) t13r3a2lr15an t2r2al 2l t2.001mo
@@ -24,10 +30,15 @@ $((16\#0378)) t13rt12rxt10ra 3a2lr15an t12r3al t13r1a1+l t.5001mx 140a t11r15a5M
  $((16\#047b)) 16t15r1am- t t11rt12ra 345.43m15a r 3a2lr15an 0t-10r2.3m7al 128a tt6r15a15xm t11r15a3M0Gm o
 
  $((16\#047b)) 16t15r1am- tt12r5.4m15Mr t10rx 3a2lr15an 3l tt7r7a7xm1l t11r15a3M0Gm 1r a
- $((16\#047b)) 16t15r1am- t 3a2lr15an 4l tt6r15a15xm t11r15a3M0Gm 2r a t4l 64a $(euc 10 4) o 
+ $((16\#047b)) 16t15r1am- t 3a2lr15an 4l tt6r15a15xm t11r15a3M0Gm 2r a t4l 64a $(euc t10r 4) o 
  
- $((16\#047b)) 16t15r1am- t 3a2lr15an 2l tt6r15a15xm t11r15a3M0Gm 2r a tt6r15a15xm $(euc 10 4) 1r o 
- $((16\#047b)) 16t15r1am- t2m 3a2lr15an t1230ds0.00002m1+m 4l 128a tt6r15a15xm t11r15a3M0Gm 1l 128a o t7l $(euc 10 4) o 
+ $((16\#047b)) 16t15r1am- t 3a2lr15an 2l tt6r15a15xm t11r15a3M0Gm 2r a tt6r15a15xm $(euc t10r 4) 1r o 
+ $((16\#047b)) 16t15r1am- t 3a2lr15an 1l tt6r15a15xm t11r15a3M0Gm 2r o tt6r15a15xm $(euc t10r 4) 1r o 
+ $((16\#047b)) 16t15r1am- t 3a2lr15an t10r3al tt6r15a15xm t11r15a3M0Gm 2r o tt6r15a15xm $(euc t10r 4) 1r x 
+ $((16\#047b)) 16t15r1am- t 3a2lr15an t10r3al tt6r15a15xm t11r15a3M0Gm 3l 127a o tt6r15a15xm $(euc t10r 4) 1r o 
+ $((16\#047b)) 16t15r1am- t 1a2lr15an t10r2al tt6r15a15xm t11r15a3M0Gm 2l 127a o tt6r15a15xm $(euc t10r 4) 2r x 
+ $((16\#047b)) 16t15r1am- t 1a2lr15an t10r2a1-l tt6r15a15xm t11r15a3M0Gm 1l 127a o tt6r15a15xm $(euc t10r 4) 2r o 
+ $((16\#047b)) 16t15r1am- t2m 3a2lr15an t1230ds0.00002m1+m 4l 128a tt6r15a15xm t11r15a3M0Gm 3l 128a o t7l $(euc t10r 4) o 
 
 #  
 
@@ -40,8 +51,8 @@ $((16\#237a378)) t11rt12rx  7a2lr15an t2r3a2+l t11r15a11m16M11Gm tt3amt4rot1ro x
 $((16\#237a378)) t11rt12rx  7a2lr15an t130dst9r15am+ 2l 128a t11r15a9m16M9Lm
 
 $((16\#237a378)) t11rt12rx  7a2lr15an t t10rt11rx7a al 128a t11r15a11m16M11Lm  tt2amt3rot1ro a tt7r7a7xm 0l t10r3a0Em o
-$((16\#237a378)) t11rt12rx  7a2lr15an t t10rt11rx7a al 128a t11r15a11m16M11Lm  tt2amt3rot1ro a tt7r7a7xm 0l t10r3a0Em o t19m t t10rt11rx15a3o r3ar 128a t2ro $(euc 10 13) o 
-$((16\#237a378)) t11rt12rx  7a2lr15an t t12rt11rx7a al 128a t11r15a11m16M11Lm  tt6amt3rot1ro a tt7r7a7xm 0l t10r3a0Em o t19m t t10rt11rx15a3o r3ar 128a t2ro $(euc 10 13) x
+$((16\#237a378)) t11rt12rx  7a2lr15an t t10rt11rx7a al 128a t11r15a11m16M11Lm  tt2amt3rot1ro a tt7r7a7xm 0l t10r3a0Em o t19m t t10rt11rx15a3o r3ar 128a t2ro $(euc t10r 13) o 
+$((16\#237a378)) t11rt12rx  7a2lr15an t t12rt11rx7a al 128a t11r15a11m16M11Lm  tt6amt3rot1ro a tt7r7a7xm 0l t10r3a0Em o t19m t t10rt11rx15a3o r3ar 128a t2ro $(euc t10r 13) x
 
 #
 
