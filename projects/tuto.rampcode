@@ -7,15 +7,13 @@
 # ----
 # <F2> evaluate current line 
 # <F5> stop the sound
-# <F3> random effect
+# <F3> random effect (beta)
 # <F4> return to normal
 # <F6> change speed
 
-# OVERVIEW
-# ========
-#
-# FUNCTIONS AND OPERATIONS
-# ------------------------
+
+# OPERATORS
+# ----------
 #
 # KEYWORD	DESCRIPTION			EXAMPLES
 #
@@ -69,8 +67,9 @@
 						t2l t t11rs3m3+ ro
 						t2l t t11rs6mbro
 
-# SHELL FUNCTIONS (EXPERIMENTAL)
-# ------------------------------
+# SCRIPT FUNCTIONS
+# ----------------
+#
 # dup		duplicate			
 						$(dup 24n) 1.03m o
 						$(dup 12n) 3.01m o
