@@ -10,7 +10,7 @@ Bytebeat live-coding system.
 
 ## Usage
 
-Just run `./rampcode.sh` inside its directory and then follow the tutorial instructions.
+Just run `./rampcode.sh` inside its directory and then follow the cheatsheet for instructions.
 
 ### No sound?
 
@@ -18,7 +18,7 @@ Rampcode runs **Pure Data** with the default audio settings.  You can change and
 
 ## How does it work?
 
-Rampcode uses **PD** dynamic patchig for updating `expr~` objects.  **Vim** script send the new content, the syntax is converted via **bash**.
+Rampcode uses **PD** dynamic patchig for updating `expr~` objects.  **Vim** sends the new content, the syntax is converted with **bash** scripts.
 More documentation available in the `text` object, inside the patch.
 
 ### Bytebeat
