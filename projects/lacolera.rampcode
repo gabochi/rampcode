@@ -105,10 +105,10 @@ $(dup $(seq $(hex 047b) $(hex 101)t14r3a2Em- $(hex 101)t14r3a3Em+ t t12r7.11m13M
 #
 
  $(seq $(hex 237) t14r1a+ t10r3a) n 2l 127a
- $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 127a
- $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l 127a
- $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l t7r127a- 127a 
- $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l  t5ra t10r3a3xtm o
+
+# $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 127a
+ $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l   t8r- 
+ $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l  t10r3a3xtm x t8r-
 
  t10r3a $(seq $(hex 237) t14r1a+ t10r3M) n t10r7a5M t14r1a+ l t t10r9M  rx tt7r7a7xm I
  t10r3a $(seq $(hex 237) t14r1a+ t10r3M) n t10r7a5M t14r1a+ l tx 128a tt7r7a7xm I
@@ -117,4 +117,15 @@ $(dup $(seq $(hex 047b) $(hex 101)t14r3a2Em- $(hex 101)t14r3a3Em+ t t12r7.11m13M
 
 t10r3a t10rs0.8L $(seq $(hex 237) t14r1a+ t10r3M) n t10r7a5M t14r1a+ l t t10rs7ml o 128a t2r255a t1.5d6r255a Lm $(seq $(hex 237) t14r1a+ tt5d10r11Mr3a) n 3l  I tt7r7a7xm I
 
-t10r3a $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 1r $(seq $(hex 237) t14r1a+ t12r3a) n t13rt12rx5M1+l 2r o 127t1024+4r255a-ba 1.5m  tt7r3a3xlt2ro 128a I
+#t10r3a $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 1r $(seq $(hex 237) t14r1a+ t12r3a) n t13rt12rx5M1+l 2r o 127t1024+4r255a-ba 2m  tt7r3a3xlt2ro  I
+
+ $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 2r 128a $(seq $(hex 237) t14r1a+ t12r3a) n t13rt12rx5M1+l 1r 128a x tt8r3a3xl t10r3a0Em o 
+
+ $(dup $(seq $(hex 237) t14r1a+ t10r3a) n 2l ) 1.250125m x 127a 
+ $(dup $(seq $(hex 237) t14r1a+ t10r3a) n 2l ) 1.250125m x 127a t3rt4ra1-128a o
+ $(dup $(seq $(hex 237) t14r1a+ t10r3a) n 2t10r1a+l ) 1.250125m x 127a t1rt4ra6-128a o
+ $(dup $(seq $(hex 237) t14r1a+ t10r3a) n t10rt12rx3a2+ l ) 1.250125m x 127a t3rt6ra1-128a o
+ $(dup $(seq $(hex 237) t14r1a+ t10r3a) n 1r t10rt12rx3a2+ l ) 1.250125m x 128a t1rt8r3a3xl t4r255xa  o
+
+
+ $(seq $(hex 237) t14r1a+ t11r3a) n t12rt11rx5M1+l 1r 127a t1.01m5ra $(seq $(hex 237) t14r1a+ t13r3a) n t14rt13rx5M1+l 2r 127a t5ra + 
