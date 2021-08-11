@@ -22,7 +22,7 @@ function Dale()
 "random FX
 function Rompe()
 "	silent exe '!scripts/parse.sh t $((RANDOM\%3))r$((RANDOM\%3))l$(((1<<RANDOM\%5+9)-1))at13r8192m+t$((RANDOM&3))l$((RANDOM&31|1))a+ | pdsend 3031' | redraw!
-	silent exe '!scripts/parse.sh t $((RANDOM\%30+2)) at+ 1 $((RANDOM\%4+10)) l M | pdsend 3031' | redraw!
+	silent exe '!scripts/parse.sh t $((RANDOM\%30+2)) at+ $((RANDOM\%6+1<<10)) M | pdsend 3031' | redraw!
     normal <C-o>
 	endfunction
 
