@@ -2,7 +2,7 @@
 
 function HighL()
    " Matches
-    syn match Function /t\|n\|s/
+    syn match Function /t\|n\|s\|b/
     syn match Number /[0-9]\+/
     syn match Conditional /L\|G\|E\|N\|I/
     "syn match ? /a\|o\|x/
@@ -22,7 +22,7 @@ function Dale()
 "random FX
 function Rompe()
 "	silent exe '!scripts/parse.sh t $((RANDOM\%3))r$((RANDOM\%3))l$(((1<<RANDOM\%5+9)-1))at13r8192m+t$((RANDOM&3))l$((RANDOM&31|1))a+ | pdsend 3031' | redraw!
-	silent exe '!scripts/parse.sh t $(( (RANDOM\%6+1<<10)-1 )) a t13r13l+ | pdsend 3031' | redraw!
+	silent exe '!scripts/parse.sh t $(( (1<<13)-1 )) a $(( (RANDOM\%6+1<<10) )) M t13r13l+ | pdsend 3031' | redraw!
     normal <C-o>
 	endfunction
 
