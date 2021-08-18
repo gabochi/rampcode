@@ -133,3 +133,25 @@ $((16\#27bce)) t12r 1.4m 6M2lr15a n t98ds2m+ 1t3d11r3M+l 127a
  $(seq $(hex 237) t14r1a+ t11r3a) n t12rt11rx5M1+l 1r 127a t1.01m5ra $(seq $(hex 237) t14r1a+ t13r3a) n t14rt13rx5M1+l 2r 127a t5ra + 
  $(seq $(hex 237) t14r1a+ t10r3a) n t12rt11rx5M1+l 2r 127a $(seq $(hex 237) t14r1a+ t12r3a) n t13rt12rx3M1+l 1r 128a x tt8r3a3xl t10r3a0Em o 
 
+#
+
+ t t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm 128a
+ 
+ tt2rr t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm 128a
+
+ t $(seq $(hex 17a) t10r3a) n t11r3ar r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm 128a
+
+
+ t $(seq $(hex 17a) t10r3a) n t11r3ar r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm tt3ra5- $(euc t11r 7) x 128a
+
+
+ t $(seq $(hex 17a) t10r3a) n t11r3ar r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm tt t13r5M5+ r7a7xl $(euc t11r 7) o 128a
+
+ 
+ t $(seq $(hex 17a) t10r3a) n t11r3ar r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm tt t13r5M5+ r7a7xl $(euc t11r 7) o tt127am t2r255xa o 128a 
+
+
+ t $(seq $(hex 17a) t10r3a) n t11r3ar t12rt13rm7M1+ l  r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm t2lt1l31Mm 128a t 5 r255xa o 128a 
+
+ 
+ t $(seq $(hex 17a) t10r3a) n t11r3ar t12rt13rm7M1+ l  r t t1.75d12r1a2+ t12r3M0E1m- r a t12r5M1+ - t t11r2.2m3a r255a t11rs255mb Lm t2lt1l31Mm 128a t 5 r255xa o t t11r1a l255M t12r3a0Em o 128a
