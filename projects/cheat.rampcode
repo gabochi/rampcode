@@ -148,4 +148,23 @@
 # Control amplitudes and mix with operators
  $(seq $(hex 237) t14r1a+ t $(seq $(hex 7ab9a8b) t13r6M) r3a) n t12rt11rx5M1+l 127a t10r3a3xtm 128a o
 
+# Kicks are never enought
+t1rt9r3a3xmt7r3a3xl
 
+# Distortion, harmonic? noise, xor and modulo instant sequencer
+t t10r3a l
+t t31M+ t10r3a l
+
+t 3 l t 7 l t 10 r 54 x 131 M M + t 10 r 13 x 15 M 7 a 1 - d 128 a
+
+t 876 x 5 M 6 l
+t1r t10r67x9999M x 5M 6l
+
+
+# or wrap
+
+t 100 o 1 +
+
+# xor seq
+
+t t 10 r 75 x l

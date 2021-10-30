@@ -1,4 +1,4 @@
-#N canvas 769 351 325 162 12;
+#N canvas 769 383 325 162 12;
 #N canvas 0 96 745 432 rampatch 0;
 #X obj 25 204 phasor~;
 #X obj 25 179 expr $f1/64.0;
@@ -36,6 +36,7 @@ expr~ \$1 \, obj 0 99 s~ out \, connect 0 0 1 0 \, connect 1 0 2 0
 #X obj 364 104 symbol;
 #X obj 546 244 netreceive 3031;
 #X obj 364 79 netreceive 3030;
+#X obj 126 186 netreceive 3033;
 #X connect 0 0 11 0;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
@@ -51,6 +52,7 @@ expr~ \$1 \, obj 0 99 s~ out \, connect 0 0 1 0 \, connect 1 0 2 0
 #X connect 17 0 14 0;
 #X connect 18 0 15 0;
 #X connect 19 0 17 0;
+#X connect 20 0 0 1;
 #X restore 12 19 pd rampatch;
 #X obj 11 90 text define -k readme;
 #A set Hi \, this patch receives msgs sent via pdsend in ports 3030

@@ -1,6 +1,37 @@
 
 
+# norm
+t  
 
+# loop
+t1 14lM  
+
+# dist
+t70o
+tt5r255ax
+
+# gate
+t10r3a t3d1023at5d1023aLtm tI
+
+# trig
+t10r3a t$(euc t10r1+ 11) tI
+
+# phasor
+t tt10r255aM+
+
+# combos
+
+       t 
+
+t10r3a t t8r255a Mt+ t1023a1024Lm $(euc t10r1+ 16) 1 16lM  tI 
+
+###
+
+t10r3a t8x tI
+
+t10r3a tt6M+ tI
+
+t10r3a tt10r1.5m1ar tI
 
 
 
