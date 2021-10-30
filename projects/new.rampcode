@@ -1,0 +1,173 @@
+#
+#
+
+$(seq $(hex 0103) t13r3a) n 127a
+ 
+$(seq $(hex 0103) t13r3a) n 64a $(seq $(hex 3537) t13r3a) n 63a + 
+
+$(seq $(hex 3537) t13r3a) n 64a $(seq $(hex 79a9) t13r3a) n 63a +
+
+$(seq $(hex 3537) t13r3a) n 64a $(seq $(hex 79a9) t13r3a) n 63a $(seq $(hex 03579ae) t11rt10rm6M) n 1l t10rt11rm127a a ++ 
+
+$(seq $(hex 0103) t13r3a) n 64a $(seq $(hex 3537) t13r3a) n 63a  $(seq $(hex 0573) t11rt10rm) n 2l t10rt11rm127a a ++
+
+$(seq $(hex 3537) t13r3a) n 63o $(seq $(hex 79a9) t13r3a) n 63o $(seq $(hex 03579ae) t11rt10rm6M) n 1r t10rt10rm127a x ++ 63a 255t4r255ad255m2r127a x
+
+$(seq $(hex 0103) t13r3a) n 64o $(seq $(hex 3537) t13r3a) n 63o  $(seq $(hex 0573) t11rt10rm) n 2l t10rt11rm127a a ++  63a 255t4r255ad255m2r127a x
+
+$(seq $(hex 0103) t13r3a) n 64a $(seq $(hex 3537) t13r3a) n 63a  $(seq $(hex 0573) t11rt10rm) n 2l t10rt11rm127a a ++  63a 255t4r255ad255m2r127a x
+
+#$(seq $(hex 3537) t13r3a) n 64a $(seq $(hex 79a9) t13r3a) n 63a $(seq $(hex 03579ae) t11rt10rm6M) n 1l t10rt11rm127a xx
+
+#$(seq $(hex 0103) t13r3a) n 64a $(seq $(hex 3537) t13r3a) n 63a  $(seq $(hex 0573) t11rt10rm) n 1l t11rt12rm127a xx
+
+# up
+
+$(seq $(hex 3537) t13r3a) n 63o $(seq $(hex 79a9) t13r3a) n 63o $(seq $(hex 03579ae) t11rt10rm6M) n 2r t10rt11rm127a x ++ 63a 255t4r255ad255m2r127a +
+
+$(seq $(hex 3537) t13r3a) n 64a $(seq $(hex 79a9) t13r3a) n 63a $(seq $(hex 03579ae) t11rt10rm6M) n 1l t10rt11rm127a a ++ 37a 255t4r255ad255m2r128a x
+
+# up
+
+$(seq $(hex 3537) t13r3a) n 1l t4ra $(seq $(hex 79a9) t13r3a) n 63a $(seq $(hex 03579ae) t11rt10rm6M) n 2l t10rt11rm127a a xo 255t4r255ad256m3r o
+
+$(seq $(hex 3537) t13r3a) n 1l t4ra $(seq $(hex 79a9) t13r3a) n 3l 16a $(seq $(hex 03579ae) t11rt10rm6M) n 2l t10rt11rm127a a xx 255 t4r255a 4pd255ms127m127+ x
+
+$(seq $(hex 3537) t13r3a) n 1l t4ra $(seq $(hex 79a9) t13r3a) n 2l 64a $(seq $(hex 03579ae) t11rt10rm6M) n 2l t10rt11rm127a a xx 255 t4r255a 4pd255ms127m127+ x
+
+$(seq $(hex 3537) t13r3a) n 1l t4ra $(seq $(hex 79a9) t13r3a) n 3l 64a $(seq $(hex 03579ae) t11rt10rm6M) n 2l t10rt11rm127a a xx 255 t4r255a 4pd255ms127m127+ x
+
+# dis
+
+$(seq $(hex 3537) t13r3a) n 0l t4ra $(seq $(hex 79a9) t13r3a) n t1r3a l 64a $(seq $(hex 03579ae) t11rt10rm6M) n 0l t10rt11rm127a a oo 
+
+$(seq $(hex 3537) t13r3a) n 0l t4ra $(seq $(hex 79a9) t13r3a) n t2a l 64a $(seq $(hex 03579ae) t11rt10rm6M) n 0l t10rt11rm127a a xo 255 t4r255a 4pd255ms127m127+ x
+
+$(seq $(hex 3537) t13r3a) n 0l t4ra $(seq $(hex 79a9) t13r3a) n t4a l 2r 32a $(seq $(hex 03579ae) t11rt10rm6M) n t13rt14rx5Ml t10rt11rm127a a xo 255 t4r255a 4pd255ms127m127+ x
+
+# mod
+
+$(seq $(hex 0103) t13r3a) n t5ra 1l $(seq $(hex 3537) t13r3a) n 63a  $(seq $(hex 0573) t11rt10rm) n 2l t10rt11rm127a a xo 255 t4r255a 4pd255ms127m127+ x
+
+$(seq $(hex 0103) t13r3a) n 1l t6ra 128a $(seq $(hex 3537) t13r3a) n 2l 32a  $(seq $(hex 0573) t11rt10rm) n 2l t12rt11rm127a a oo 255 t4r255a 3pd255ms127m127+ x
+
+$(seq $(hex 0103) t13r3a) n 1l t6ra 128a $(seq $(hex 3537) t13r3a) n 2l 32a  $(seq $(hex 0573) t11rt10rm) n 2l t12rt11rm127a a oo 255 t4r255a 3pd255ms127m127+ o
+
+$(seq $(hex 0103) t13r3a) n t6ra 128a $(seq $(hex 3537) t13r3a) n 2l 32a  $(seq $(hex 0573) t11rt10rm) n 2l t12rt11rm127a a oo 255 t4r255a 3pd255ms127m127+ a
+
+#
+#
+
+$(sca ${arm} t10rt12rx) t5al t2ro
+
+$(sca ${arm} t10r) 1l t2al t2ro
+
+t10r3a0N $(sca ${arm} t10rt12rx) t10r3Ml t1al t2ro t2r255x255a 5r tm I
+
+t10r3a0N $(sca ${arm} t10rt12rx) t10r3Ml t4al t2ro 
+
+t10r3a0N $(sca ${arm} t10rt12rx) t11r3Ml t2r1al t2ro t2r255x255a 5r tm I
+
+$(sca ${arm} t10r) 2l $(sca ${arm} t10r3+) 2l a t3al t2ra 128a 
+
+t10r3a0N $(sca ${arm} t13r) t10rt11rm7M l t t11rs4m2+a l t t11r2.5d5M ro  t t7r7a7x l 3r 128a I
+
+t10r3a0N $(sca ${arm} t13r) $(sca ${arm} t13r3+) a t10rt11rm5M l t t10rs4m4+a l t t11rt12rm5M1+ ro  t t7r7a7x l 3r 128a I
+
+$(sca ${arm} t10r) 1l $(sca ${arm} t10r3+) 0l a t1r3al t4ra 128a
+
+$(sca ${arm} t10r) 2.1m $(sca ${arm} t10r3+) 0l a t t12r3Mr t10r7M al t1024+ t12r2.5m1a2+ r255xa 128a tt7r7a7xm 1l t10r3a0Em x
+
+
+$(sca ${arm} t13r) t10rt11rx6Ml $(sca ${arm} t10r3+) t11rt10rm6Ml a t t12r7Mr t10r3M al t1024 2m+ t13r3a1.7m4M2+ r255xa 128a tt7r7a7xm 0l t10r3a0Em o
+
+$(sca ${arm} t13r7x) 2l t10rt11rx3Ml $(sca ${arm} t13r3+7x) 1l t11rt10rm3Ml a t t12r7Mr t10r3M al t1024 2m+ t11r3a1.7m4M2+ r255xa 128a tt7r7a7xm 0l t10r3a0Em o
+
+$(sca ${arm} t13r7x) 2l t10rt11rx3Ml $(sca ${arm} t13r3+7x) 1l t11rt10rm3Ml a t t12r7Mr t10r3M al t1024 2m+ t11r3a1.7m4M2+ r255xa 128a
+
+#
+#
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 8 r5M) n 3l 127a
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 8 r5M) n 2t7r1a+l t t12r3.5m 15M1+  m 13r1a0Em 64a tt7r7a7xm t10r3a0Em 128a x
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 8 r5M) n t1r4al t t12r3.5m 15M1+  m 13r1a0Em 64a 
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 10 r5M) n t t12r3m7M al t t12r3.5m 15M1+  m 13r1a0Em 64a  1024 t1023ad3m s 127m128+ t10r3a0Em o tt t10rs16m16+  am t11r1am 32a o
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n t8r2al t5ra 127a
+
+$(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n t8r2al t4ra 1024 t1023ad3m s 127m128+ t10r3a0Em x tt25am t11r1am 63a x
+
+$(dup $(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n) 1.001mx t10r3al t2ro 
+
+$(dup $(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n) 1.01mx t10r1al t2ro 128a 1024 t1023ad8m s 128m127+ t10r3a0Em x t2rt t10rs25m30+ am t9r1a0Em 127a x
+
+$(dup $(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n) t11rt12rx3al o t10r1al t2ro 
+
+$(dup $(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n) 1.01mx t10r1al 128a t2ro 
+
+$(dup $(seq $(hex 047be) t15r3M $(hex 1000)m- t 9 r5M) n) 1.001mo t10r1al t9r255a127-ba 1024 t1023ad8m s 127m128+ t10r3a0Em x t2rt t10rs25m30+ am t9r1a0Em 64a x
+
+1024 t1023ad8m s 127m128+ t10r3a0Em t2rt t10rs25m30+ am t9r1a0Em 64a x
+
+1024 t1023ad8m s 127m128+ 0m t2rt t10rs25m30+ am t12r1a1Em 64a x t17m t5ra127a t2r255a50Lm x
+
+1024 t1023ad8m s 127m128+ t10r3a0Em t2rt t10rs25m30+ am t12r1am 64a x t17m t5ra127a t2r255a50Lm x
+
+1024 t1023ad8m s 127m128+ $(bin 0001 t10r3a) t2rt t10rs25m30+ am t12r1am 64a x t17m t4ra t2r255a50Lm x
+
+1024 t1023ad8m s 127m128+ $(bin 0001 t10r3a) t2rt t10rs25m30+ am t12r1am 64a x t 32m t6ra t t12r13.7m7a1+ m 4r255a50Lm x
+
+t t13rt12rm127a  m 127a  t t12r13.7m7a1+ m 4r255a50Lm 
+
+1024 t1023ad4m s 127m128+ $(bin 0001 t10r3a) t2rt t10rs25m30+ am t11r1am0m 64a x t t13rt12rm127a  m 127a  t t12r13.7m7a1+ m 4r255a50Lm o
+
+1024 t1023ad10m s 127m128+ $(bin 0001 t10r3a) t2rt t10rs25m30+ am t11r1am 127a t 17m 64a t t12r13.7m7a1+ m 4r255a50Lm oo
+
+t 17m 64a t t12r13.7m7a1+ m 4r255a50Lm
+
+#
+#
+
+
+$(sca ${pma} t10r5M) 4l 63a $(sca ${pma} t11r6M) 2l 63a o 
+
+$(sca ${pma} t10r3M) 2l 63a $(sca ${pma} t1.5d11r3M) 3l 63a o $(sca ${pma} 5t14r3a-) t11r1al 64a o
+
+$(sca ${pma} 5t11r3a-) 2l 63a $(sca ${pma} 5t1.05d11r3a-) 2l 63a o $(sca ${pma} 5t14r3a-) t11r1al 64a o
+
+$(sca ${pma} 5t11r6M-) 3l 63a $(sca ${pma} 5t1.25d11r6M-) 3l 63a o $(sca ${pma} 5t14r3a-) t11r1al 64a o
+
+$(sca ${pma} 5t11r2.5m6M-) 4t 14 r3a-l 63a 
+
+$(sca ${pma} 5t11r2.5m6M-) 4t 13 r3a-l 63a $(sca ${pma} 5t14r3a-) t11r1al 64a o
+
+$(sca ${pma} t10r5M) 2l 63a $(sca ${pma} t11r5M) 1l 63a o 
+
+$(sca ${pma} 5t11r2.5m6M-) 4t t13rt12rm15a r3a-l 63a $(sca ${pma} 5t14r3a-) 1r t 10 r3al 64a o
+
+$(sca ${pma} 5t11r2.5m6M-) 4t t13rt12rm15a r3a-l 63a $(sca ${pma} 5t14r3a-) 1r t t12rt13rx15a r3al 64a o
+
+#
+#
+
+
+$(seq $(hex 585c) t11r3a) $(seq $(hex 0507) t13r3a3x) + n t 3d 10r t15r5M al $(euc t10r 7t10r7a0E2m+ )
+
+ 
+$(seq $(hex 585c) t11r3a) $(seq $(hex 0507) t13r3a3x) + n t 3d 10r t15r5M al $(euc t10r 7t10r7a0E2m+ ) 128a tt7r3a3xl t7r1a1xl t9r7a0Em o t1lt1l21Mm 1 $(euc t10r 7t10r7a0E2m+ ) 0Em t5rt3r255xaa 64a o
+
+#
+#
+
+t t 10 r 45 x 7 M l t 10 r 42 x 7 M d t 4 r a 129 a t 11 r 73 x 7 d 1 + - 255 a - t 7 r 7 a 7 x t m t 10 r 3 a 0 E m x
+
+t t 10 r 45 x 7 M l t 10 r 42 x 7 M d t 4 r a 200 a t 11 r 73 x 7 d 1 + - 255 a - t 7 r 7 a 7 x t m t 10 r 3 a 0 E m +
+
+t 10 r 3 a 0 G t t 10 r 45 x 7 M l t 10 r 42 x 7 M d t 4 r x t 10 r a t 11 r 73 x 7 M 1 + - 255 a  t 7 r 7 a 7 x t m 240 t 12 r 1 a 10 m - a I
+
+t t12r6a l 128a t5ro  tt10r89x11M38xr 17M5m -
+
+t t10r6al 128a t4ro t77x-
