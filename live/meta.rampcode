@@ -1,0 +1,81 @@
+
+
+
+
+
+
+
+
+
+
+
+###
+
+
+# combo
+
+                                 t
+t10r3a t t10r7a1+m127a t12rt8rx97Mo tt8r3a3xl 128a I
+
+                t
+
+t10r3a t10o 1 13lM $(euc t11r 10) t1023a600Lm tI
+
+t10r3a t1 13lM t10r15as1+0.1Gm t1023a1000Lm t10r7.6m0al tI
+#t10r3a t1 13lM t1023at1.505d1023aLm tI
+
+#t10r3a t1 13lM t11r31a0.8m1a0Em tI
+#t10r3a t1 13lM t10r31a5M0Gm tI
+t10r3a t 1 16l1-a t $((7\#3560))t10r1M3mr7a M+ $((2\#01100101))t10r1Mr1am t1023a0a t3d1023a Lm t I
+
+t1 19l1-a
+
+t10r3a1+ t3M t1 16l1-a+ 0 11l+ t10r15a5M9Nm t1023at5d0 10l1-aLm t11r0ar tI 
+ 
+
+# stutter
+tt1023a t3d500M Lm
+t10r3att1023a t3d500M LmtI
+
+#toggle  0-1
+t$(bin 0001000100010001 t10r15a)
+
+#trigger 1-16
+t$(euc t10r1+ 9.5)
+t10r3at$(euc t10r1+ 9.5)tI
+
+#granullar
+t1 4 l1-at 3 r+
+t10r3at1 4 l1-at 3 r+tI
+
+#reseq
+t$((8\#20000560))t10r7a3mr7a1024m+
+t1 13 l1-a$((8\#20100350))t10r7a3mr7a1024m+ 0 13l+
+
+#loops
+t1 14 l1-a 0 14l+
+
+#dist
+tt 3 M+
+
+#
+
+t t10r3a1+l t10r42a6M1+d 128a tt7r7a7xm 1r 128a t10r3a0Em o 
+
+t10r3a t$(euc t11r3+ 10) t  I
+
+t $(bin 0001000100010001 t10r15a)
+
+t $((2\#0001100100110111)) t10r15ar1am
+
+t10r3a t t1023a t 7d 1023a Lm t I
+
+t t1023a t 7d 1023a Lm
+
+t1023a $((8\#26243220)) t10r7a3mr7a 10l+ t13r13l+
+
+$(bin 1101000101011101 t10r15a)
+
+t t6M +
+
+
