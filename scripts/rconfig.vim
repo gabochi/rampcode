@@ -22,13 +22,15 @@ function Dale()
 "random FX
 function Rompe()
 "	silent exe '!scripts/parse.sh t $((RANDOM\%3))r$((RANDOM\%3))l$(((1<<RANDOM\%5+9)-1))at13r8192m+t$((RANDOM&3))l$((RANDOM&31|1))a+ | pdsend 3031' | redraw!
-	silent exe '!scripts/parse.sh t $(( (1<<13)-1 )) a $(( (RANDOM\%6+1<<10) )) M t13r13l+ | pdsend 3031' | redraw!
-    normal <C-o>
+"	silent exe '!scripts/parse.sh t $(( (1<<13)-1 )) a $(( (RANDOM\%6+1<<10) )) M t13r13l+ | pdsend 3031' | redraw!
+ 	silent exe '!. scripts/func.sh && scripts/parse.sh ' . getline('.') . '| pdsend 3031' | redraw!
+"   normal <C-o>
 	endfunction
 
 "return to normal
 function Normal()
-	silent exe '!scripts/parse.sh t | pdsend 3031' | redraw!
+	silent exe '!echo "0;" | pdsend 3033' | redraw!
+"   silent exe '!scripts/parse.sh t | pdsend 3031' | redraw!
 	endfunction
 
 
