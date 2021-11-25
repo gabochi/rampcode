@@ -177,9 +177,9 @@ t10r3a0N $(sca ${arm} t10rt12rx) t10r3Ml t1al t2ro t2r255x255a 5r tm I
 $(sca ${arm} t10rt12rx) t5al t2ro
 	t10r3a t10r6a tt10r5d3Ml511at10r1024m+ $(seq $(hex 99ee888) t10r7M) o tI 4x tI
 	t10r3a 	tt10r5d3Ml511at10r1024m+ $(seq $(hex 99ee888) t10r7M) o tI
-	t10r3a t1023a2l tI 128o
+#	t10r3a t1023a2l tI 128o
 #	t10r3M t1023a2l tI 128o
-	t10r1a t1023a2l tI 128o		
+#	t10r1a t1023a2l tI 128o		
 #	t128o
 #	t8x				
 t10r3a0N $(sca ${arm} t13r) $(sca ${arm} t13r3+) a t10rt11rm5M l t t10rs4m4+a l t t11rt12rm5M1+ ro  t t7r7a7x l 3r 128a I
@@ -331,7 +331,7 @@ t $(seq $(hex 17a) t t11r55x5M7+  r3a) n t10r1.25d1a t13r3M1+m 1+l 255a t7ra
 	
 			t15o	
 tt7r7a7xl3r $(euc t10r 4.75) tt9al t2rt0roto255xa $(euc t10r2+ 4.75) o
-			t
+			t		
 			t9o			
 2 $(seq $(hex 024579) t10r t13r5M1+  m6M) 12dptm t10r3al t2rt5r128+o255xa tt7r7a7xl3r $(euc t10r 4.75) tt9al t2r255xa $(euc t10r2+ 4.75) o o
 			t		
