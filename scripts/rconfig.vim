@@ -15,6 +15,7 @@ function HighL()
 
 function Dale()
 	silent exe '!. scripts/func.sh && scripts/parse.sh ' . getline('.') . '| pdsend 3030' | redraw!
+	#silent exe '!. scripts/func.sh && scripts/parse.sh ' . getline('.') . ' >> $LOGFILE' | redraw!
 	silent exe '!. scripts/func.sh && echo expr~ ' . getline('.') . ' >> $LOGFILE' | redraw!
 	endfunction
 

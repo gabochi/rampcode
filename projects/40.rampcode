@@ -30,3 +30,10 @@ $(hex f7ff) t t10rt13rx15a ro $(seq 47 t t12rt11rxt10ro15a r3a 3t14r1amx) n t11r
 
 
 t2l128a 
+
+
+#---
+
+$(hex f7ff) t t10rt13rx15a ro $(seq 47 t t12rt11rxt10ro15a r3a 3t14r1amx) n t11rt12rx3M l t10r1al 3r31ar1a 128m $(euc t10r1+ t1.5d13r2a9+) 255 1864501 t5r31ar1am $(euc t10r 4) o 255 1369261738 t3r31ar1am $(euc t10r64+ 2) x
+
+ t3l t t10rt13rx15a ro $(seq 47 t t12rt11rxt10ro15a r3a 3t14r1amx) n t11rt12rx3M l t10r1al 3r31ar1a 128m $(euc t10r1+ t1.5d13r2a9+) 255 1864501 t5r31ar1am $(euc t10r 4) o 255 1369261738 t3r31ar1am $(euc t10r64+ 2) x

@@ -1,0 +1,6 @@
+
+#t $(seq $(hex 047c) t 10 2 $(bin 1100 t10r3a) - r3M) n 4 t7r7a7x $(bin 0001 t10r3a) - l
+
+#tt7r7a7x3-l $(bin 0001 t10r3a) 128a tt10r3Ml 128a + 
+
+t t10r77x5Ml
